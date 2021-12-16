@@ -1496,7 +1496,7 @@ ul {
 .overlay {   
     opacity: 0;
     visibility: hidden;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -1522,10 +1522,15 @@ ul {
     transition: 0.3s all;
 }
 
+body.modal-active {
+    overflow: hidden;
+}
+
 .modal.active,
 .overlay.active{
     opacity: 1;
     visibility: visible;
+    overflow: auto;        
 }
 
 .modal__cross {
