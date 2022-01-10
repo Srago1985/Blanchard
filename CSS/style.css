@@ -1536,6 +1536,7 @@ ul {
     background: #FFFFFF;
     box-shadow: 0px 0px 80px rgba(0, 0, 0, 0.8);
     transition: 0.3s all;
+    overflow-y: auto;
 }
 
 body.modal-active {
@@ -1544,11 +1545,13 @@ body.modal-active {
 }
 
 .modal.active,
-.overlay.active{
+.overlay.active {
     opacity: 1;
     visibility: visible;
-    overflow: auto;        
+    overflow-y: auto;           
 }
+
+
 
 .modal__cross {
     width: 15px;
