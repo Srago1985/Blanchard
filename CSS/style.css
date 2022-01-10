@@ -26,6 +26,10 @@
   outline: 0;
 }
 
+body {
+    font-family: Open Sans, Arial, sans-serif;
+}
+
 a {
     text-decoration: none;
 }
@@ -84,7 +88,11 @@ ul {
 }
 
 .header__logo {
-    margin-right: 179px;
+    margin-right: 179px;    
+}
+
+.header__link:focus {
+    outline: 1px solid white;
 }
 
 .header__nav2 {
@@ -110,8 +118,7 @@ ul {
     margin-right: 279px;
 }
 
-.header__nav-item {
-    font-family: Open Sans;
+.header__nav-item {    
     font-style: normal;
     font-weight: 600;
     font-size: 18px;
@@ -140,17 +147,19 @@ ul {
     position: relative;
     display: flex;
     align-items: center;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
     line-height: 25px;
     color: #FFFFFF;
-    text-decoration: none; 
+    text-decoration: none;
+    transition: .3s ease-in-out; 
 }
 
 .header__login svg {
     margin-right: 7px;
+    transition: .3s ease-in-out;
 }
 
 .header__login:focus {
@@ -159,13 +168,15 @@ ul {
 }
 
 .header__login:hover {
-    color: #C283F3;
-    transition: .3s ease-in-out;    
+    color: #C283F3;        
+}
+
+.header__login svg path {
+    transition: .3s ease-in-out;
 }
 
 .header__login:hover svg path {
-    fill: #C283F3;
-    transition: .3s ease-in-out;
+    fill: #C283F3;    
 }
 
 .header__login:active {
@@ -257,20 +268,24 @@ ul {
 
 .header2__item-list {
     position: absolute;
-    top: 100%;    
+    top: 100%;
+    cursor: default;    
 }
 
 .header2__menu {
     list-style-type: none;    
-    height: 220px;
+    max-height: 220px;
+}
+
+.header2__menu-artist {
+    cursor: pointer;
 }
 
 .header2__menu-container {
     display: none;
-    padding: 40px 40px 0 40px;
+    padding: 40px;
     background: rgba(0, 0, 0, 0.6);
-    width: 220px;
-    height: 260px;
+    width: 220px;    
 }
 
 .header2__menu-container.show {  
@@ -281,8 +296,7 @@ ul {
 .header2__item {
     margin: 0;
     display: flex;
-    flex-direction: column;
-    font-family: Open Sans;
+    flex-direction: column;    
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
@@ -301,8 +315,7 @@ ul {
     transition: all .3s ease-in-out;
 }
 
-.header2__item-head {
-    font-family: Open Sans;
+.header2__item-head {    
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
@@ -310,6 +323,10 @@ ul {
     text-align: center;
     color: #FFFFFF;
     padding: 0;
+}
+
+.simplebar-scrollbar {
+    opacity: 1;
 }
 
 .header2__item-head:hover {
@@ -338,7 +355,7 @@ ul {
 
 .header2__artist-link {
     text-decoration: none;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
@@ -547,7 +564,7 @@ ul {
 }
 
 .header2__search-input::placeholder {
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
@@ -601,7 +618,7 @@ ul {
 .hero__head {
     margin: 0;
     max-width: 597px;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: bold;
     font-size: 75px;
@@ -613,7 +630,7 @@ ul {
 .hero__text {
     margin: 0;
     max-width: 579px;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: bold;
     font-size: 18.7px;
@@ -632,7 +649,7 @@ ul {
     padding: 15px 32px;
     background-color: #9D5CD0;
     border-radius: 100px;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: bold;
     font-size: 18px;
@@ -685,7 +702,7 @@ ul {
 .about__head {
     margin: 0;
     margin-bottom: 17px;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 48px;
@@ -697,7 +714,7 @@ ul {
     margin: 0;
     margin-bottom: 68px;
     max-width: 1080px;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -764,7 +781,7 @@ ul {
 .gallery__head {
     margin: 0;
     margin-bottom: 16px;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 48px;
@@ -775,7 +792,7 @@ ul {
 .gallery__filter-head {
     margin: 0;
     margin-bottom: 10px;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
@@ -798,7 +815,7 @@ ul {
 .choices__inner {    
     min-height: 40px;
     background-color: transparent;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -828,7 +845,7 @@ ul {
 
 .choices__list--dropdown {
     background-color: transparent;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -870,7 +887,7 @@ ul {
 }
 
 .gallery__text {
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
@@ -943,7 +960,7 @@ ul {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin-bottom: 27px;
+    margin-bottom: 27px;    
 }
 
 .swiper1__buttons-prev,
@@ -956,6 +973,7 @@ ul {
     width: 34px;
     background: transparent;
     cursor: pointer;
+    transition: .3s ease-in-out;
 }
 
 .swiper1__buttons-prev svg path:hover {
@@ -1010,7 +1028,7 @@ ul {
     max-width: 51px;
     text-align: center;
     margin-right: 8px;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -1066,7 +1084,7 @@ ul {
 .catalog__heading-head {
     margin: 0;
     margin-right: 39px;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 48px;
@@ -1137,7 +1155,7 @@ ul {
 .catalog__text {
     display: block;
     max-width: 1080px;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -1158,7 +1176,7 @@ ul {
 }
 
 .catalog__content-text:hover {
-    text-decoration: underline;
+    border-bottom: 1px solid #9D5CD0;
     color: #9D5CD0;
 }
 
@@ -1168,7 +1186,7 @@ ul {
 }
 
 .catalog__country-head {
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: 600;
     font-size: 24px !important;
@@ -1329,7 +1347,7 @@ ul {
 
 .catalog__content-item {
     position: relative;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -1374,7 +1392,7 @@ ul {
 }
 
 .lorem__head {
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: 600;
     font-size: 24px;
@@ -1384,7 +1402,7 @@ ul {
 }
 
 .lorem__text {
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -1394,7 +1412,7 @@ ul {
 }
 
 .lorem__link {
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
@@ -1425,7 +1443,7 @@ ul {
 }
 
 .catalog__img-head {
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: 600;
     font-size: 24px;
@@ -1436,7 +1454,7 @@ ul {
 
 .catalog__img-date {
     display: block;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 12px;
@@ -1448,7 +1466,7 @@ ul {
 .catalog__img-text {
     display: block;
     margin-bottom: 15px;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -1484,12 +1502,10 @@ ul {
     color: #9D5CD0;
 }
 
-.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
-    font-family: Open Sans;
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {    
     font-style: normal;
     font-weight: normal;
-    font-size: 16px;
-    line-height: 32px;
+    font-size: 16px;    
     color: #333333;
 }
 
@@ -1524,6 +1540,7 @@ ul {
 
 body.modal-active {
     overflow: hidden;
+    cursor: pointer;
 }
 
 .modal.active,
@@ -1557,7 +1574,7 @@ body.modal-active {
 .modal__title-head {
     margin: 0;
     margin-bottom: 5px;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: 600;
     font-size: 24px;
@@ -1567,7 +1584,7 @@ body.modal-active {
 
 .modal__title-name {
     margin: 0;    
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
@@ -1578,7 +1595,7 @@ body.modal-active {
 .modal__title-date {
     margin: 0;
     margin-bottom: 41px;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 12px;
@@ -1588,7 +1605,7 @@ body.modal-active {
 
 .modal__title-text {
     margin: 0;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -1603,7 +1620,7 @@ body.modal-active {
 }
 
 .events__head {
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 48px;
@@ -1643,7 +1660,7 @@ body.modal-active {
     position: absolute;
     right: 15px;
     top: 315px;   
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: 600;
     font-size: 12px;
@@ -1656,7 +1673,7 @@ body.modal-active {
 
 .events__card-head {
     margin: 0;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: 600;
     font-size: 24px;
@@ -1667,7 +1684,7 @@ body.modal-active {
 
 .events__card-text {
     display: block;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -1678,7 +1695,7 @@ body.modal-active {
 
 .events__card-link {
     display: block;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -1753,7 +1770,7 @@ body.modal-active {
     box-sizing: border-box;
     border-radius: 100px;
     color: #9D5CD0;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: bold;
     font-size: 18px;
@@ -1817,7 +1834,7 @@ body.modal-active {
 
 .editions__left-head {
     margin: 0;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 48px;
@@ -1845,7 +1862,7 @@ body.modal-active {
     text-align: left;
     font-size: 24px;
     background-color: transparent;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -1856,7 +1873,7 @@ body.modal-active {
     color: #ffffff;
     cursor: pointer;
     transition: color 0.3s ease;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -1937,7 +1954,7 @@ body.modal-active {
 .price__head {
     margin: 0;
     margin-bottom: 6px;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -1946,7 +1963,7 @@ body.modal-active {
 }
 
 .price__text {
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -1961,7 +1978,7 @@ body.modal-active {
     height: 37px;
     padding-left: 10px;
     background: rgba(157, 92, 208, 0.5);
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -2053,7 +2070,7 @@ input::-webkit-inner-spin-button {
 
 .text__left-book {
     margin: 0;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -2063,7 +2080,7 @@ input::-webkit-inner-spin-button {
 
 .text__left-author {
     margin: 0;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -2072,7 +2089,7 @@ input::-webkit-inner-spin-button {
 }
 
 .text__right {
-    font-family: Open Sans;
+    
     font-style: italic;
     font-weight: normal;
     font-size: 16px;
@@ -2152,7 +2169,7 @@ input::-webkit-inner-spin-button {
     max-width: 51px;
     text-align: center;
     margin-right: 8px;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -2166,7 +2183,7 @@ input::-webkit-inner-spin-button {
     flex-direction: row;
     align-items: center;
     padding: 5px 18px;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -2216,7 +2233,7 @@ input::-webkit-inner-spin-button {
 }
 
 .projects__head {
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 48px;
@@ -2227,7 +2244,7 @@ input::-webkit-inner-spin-button {
 }
 
 .projects__text {
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -2250,7 +2267,7 @@ input::-webkit-inner-spin-button {
 }
 
 .projects__partners-head {
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: 600;
     font-size: 24px;
@@ -2349,7 +2366,7 @@ input::-webkit-inner-spin-button {
 .tippy-box[data-theme~='projects'] {
     background-color: #9D5CD0;
     color: white;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: 600;
     font-size: 12px;
@@ -2399,6 +2416,7 @@ input::-webkit-inner-spin-button {
 
 .text-link {
     color: #9D5CD0;
+    border-bottom: 1px solid transparent;
 }
 
 .text-link:focus-visible {
@@ -2407,7 +2425,7 @@ input::-webkit-inner-spin-button {
 }
 
 .text-link:hover {
-    text-decoration: underline;
+    border-color: #9D5CD0;
 }
 
 .text-link:active {
@@ -2428,7 +2446,7 @@ input::-webkit-inner-spin-button {
     margin: 0;
     margin-bottom: 16px;
     padding-left: 160px;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 48px;
@@ -2446,7 +2464,7 @@ input::-webkit-inner-spin-button {
 
 .contacts__left-point {
     margin: 0;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: 600;
     font-size: 24px;
@@ -2456,7 +2474,7 @@ input::-webkit-inner-spin-button {
 
 .contacts__left-adress {
     margin: 0;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -2468,7 +2486,7 @@ input::-webkit-inner-spin-button {
 .contacts__form-head {
     margin: 0;
     margin-bottom: 19px;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 24px;
@@ -2490,7 +2508,7 @@ input::-webkit-inner-spin-button {
     height: 40px;
     margin-bottom: 23px;
     padding-left: 24px;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -2500,7 +2518,7 @@ input::-webkit-inner-spin-button {
 
 .contacts__form-name::placeholder {
     
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -2517,7 +2535,7 @@ input::-webkit-inner-spin-button {
     width: 400px;
     height: 40px;
     margin-bottom: 22px;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -2526,7 +2544,7 @@ input::-webkit-inner-spin-button {
 }
 
 .contacts__form-phone::placeholder {    
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -2547,7 +2565,7 @@ input::-webkit-inner-spin-button {
 .is-label-invalid {
     position: relative;
     bottom: 80px;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 12px;
@@ -2566,7 +2584,7 @@ input::-webkit-inner-spin-button {
     align-items: center;
     margin-bottom: 37px;
     padding: 14px 33px;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: bold;
     font-size: 18px;
@@ -2614,7 +2632,7 @@ input::-webkit-inner-spin-button {
 .contacts__messengers-head {
     margin: 0;
     margin-bottom: 15px;
-    font-family: Open Sans;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 24px;
@@ -2816,7 +2834,7 @@ input::-webkit-inner-spin-button {
     }
 
     .header__nav-item {
-        font-family: Open Sans;
+        
         font-style: normal;
         font-weight: 600;
         font-size: 24px;
@@ -2825,6 +2843,9 @@ input::-webkit-inner-spin-button {
     .menu-burger__header {
         display: block;
         cursor: pointer;
+        border: none;
+        background: transparent;
+        padding: 0;
         width: 36px;
         height: 28px;
         position: relative;
@@ -2835,6 +2856,7 @@ input::-webkit-inner-spin-button {
     .menu-burger__header span,
     .menu-burger__header:before,
     .menu-burger__header::after {
+        left: 0;
         width: 28px;
         height: 3.65px;
         background: #FFFFFF;
@@ -3315,7 +3337,7 @@ input::-webkit-inner-spin-button {
 
     .gallery__text-768 {
         display: block;        
-        font-family: Open Sans;
+        
         font-style: normal;
         font-weight: 400;
         font-size: 16px;
@@ -3970,7 +3992,7 @@ input::-webkit-inner-spin-button {
     }
 
     .header__nav-item {
-        font-family: Open Sans;
+        
         font-style: normal;
         font-weight: 600;
         font-size: 16px;
@@ -4298,7 +4320,7 @@ input::-webkit-inner-spin-button {
     }
 
     .catalog__heading-head {
-        font-family: Open Sans;
+        
         font-style: normal;
         font-weight: normal;
         font-size: 28px;
@@ -4311,7 +4333,7 @@ input::-webkit-inner-spin-button {
     }
 
     .catalog__country-head {
-        font-family: Open Sans;
+        
         font-style: normal;
         font-weight: 600;
         font-size: 18px !important;
@@ -4459,7 +4481,7 @@ input::-webkit-inner-spin-button {
     }
 
     .projects__head {
-        font-family: Open Sans;
+        
         font-style: normal;
         font-weight: normal;
         font-size: 28px;
@@ -4473,7 +4495,7 @@ input::-webkit-inner-spin-button {
     }
 
     .projects__partners-head {
-        font-family: Open Sans;
+        
         font-style: normal;
         font-weight: 600;
         font-size: 18px;
