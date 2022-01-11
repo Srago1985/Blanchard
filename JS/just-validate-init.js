@@ -1,3 +1,15 @@
+window.showNotification = () => {
+    window
+        .Toastify({
+            text: 'Заявка успешно отправлена!',
+            duration: 5000,
+            close: true,            
+            position: 'left', // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+        })
+        .showToast();
+};
+
 const validation = new JustValidate('#form', {
     errorFieldCssClass: 'is-invalid',
     errorFieldStyle: {
@@ -28,5 +40,11 @@ validation
             rule: 'required',
             errorMessage: 'Введите телефон',
         },        
-    ]);
-
+    ])
+    .onSuccess((ev) => {
+        ev.preventDefault();
+        window.showNotification();
+        this.form.reset();        
+    })
+    
+    

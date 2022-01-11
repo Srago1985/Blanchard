@@ -16,10 +16,11 @@
     <script src="JS/swiper-bundle.min.js"></script>
     <script src="https://api-maps.yandex.ru/2.1/?apikey=ваш_API-ключ&lang=ru_RU"></script>
     <link rel="stylesheet" href="CSS/simplebar.css">
+    <link rel="stylesheet" href="CSS/toastify.css">
     <link rel="stylesheet" href="CSS/normalize.css">
     <link rel="stylesheet" href="CSS/style.css">
 </head>
-<body>
+<body>    
     <header class="header">
       <div class="container header__container">
         <button class="menu-burger__header" aria-label="Открыть меню">
@@ -457,9 +458,8 @@
                   </svg>
                 </button>
               </div>              
-              <div class="swiper-wrapper">
-                <div class="overlay js-overlay-modal"></div>
-                <div tabindex="0" class="swiper-slide gallery__slide slide5 js-open-modal" data-modal="1">
+              <div class="swiper-wrapper">                
+                <div tabindex="0" class="swiper-slide gallery__slide slide5 modal-btn" data-btn="first">
                   <img src="IMG/gallery1.jpg" alt="" class="gallery__slide-pic">
                 </div>                
                 <div tabindex="0" class="swiper-slide gallery__slide slide4">
@@ -539,23 +539,20 @@
                  либо воспользуйтесь лицензией.
             </span>
           </div>
-          <div class="modal" data-modal="1">            
-            <svg class="modal__cross js-modal-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <path
-                d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z" />
-            </svg>
-            <img class="modal__img" src="IMG/gallery1.jpg" alt="torso">
-            <div class="modal__title">
-              <h3 class="modal__title-head">Казимир Малевич</h3>
-              <p class="modal__title-name">"Торс (Фигура с розовым лицом)"</p>            
-              <p class="modal__title-date">1928—1929</p>
-              <p class="modal__title-text">
-                Холст, масло.            
-                65 x 72.            
-                Государственный Русский музей
-              </p>
-            </div>                       
-          </div>
+          <div class="modal">
+            <div class="modal__container" data-window="first">
+              <button class="modal-close"></button>
+              <div class="modal-content">
+                <img src="IMG/gallery1.jpg" alt="torso" class="modal-picture">
+                <div class="modal-text">
+                  <h4 class="modal-head">Казимир Малевич</h4>
+                  <span class="modal-name">"Торс (Фигура с розовым лицом)"</span>
+                  <span class="modal-date">1928—1929</span>
+                  <span class="modal-description">Холст, масло. 65 x 72. Государственный Русский музей</span>
+                </div>    
+              </div>
+            </div>
+          </div>           
         </div>
       </section>
       <section class="catalog" id="catalog" aria-label="Каталог художников">
@@ -573,7 +570,7 @@
                   <button data-path="germany" aria-label="Германия" class="catalog__heading-country catalog__country germany"></button>
                 </li>
                 <li class="tab__list-item">
-                  <button data-path="italy" aria-label="Италия" class="catalog__heading-country catalog__country italy"></button>
+                  <button data-path="italy" aria-label="Италия" class="catalog__heading-country catalog__country italy btn-active"></button>
                 </li>
                 <li class="tab__list-item">
                   <button data-path="russia" aria-label="Россия" class="catalog__heading-country catalog__country russia"></button>
@@ -620,7 +617,7 @@
                   </h3>
                   <ul class="catalog__country-content catalog__content">
                     <li class="catalog__content-item">
-                      <button data-path="fish1" class="catalog__content-text btn bg-focus">
+                      <button data-path="fish1" class="catalog__content-text btn bg-focus btn2-active">
                         Анастасия
                       </button>
                     </li>
@@ -850,7 +847,7 @@
                   </h3>
                   <ul class="catalog__country-content catalog__content">
                     <li class="catalog__content-item">
-                      <button data-path="fish2" class="catalog__content-text btn bg-focus">
+                      <button data-path="fish2" class="catalog__content-text btn bg-focus btn2-active">
                         Бургмайер, Ханс
                       </button>
                     </li>
@@ -1153,7 +1150,7 @@
                       </button>
                     </li> 
                     <li class="catalog__content-item">
-                      <button data-path="ghirlandaio" class="catalog__content-text btn bg-focus">
+                      <button data-path="ghirlandaio" class="catalog__content-text btn bg-focus btn2-active">
                       Доменико Гирландайо
                       </button>
                     </li>                    
@@ -1408,7 +1405,7 @@
                   </h3>
                   <ul class="catalog__country-content catalog__content">
                     <li class="catalog__content-item">
-                      <button data-path="fish4" class="catalog__content-text btn bg-focus">
+                      <button data-path="fish4" class="catalog__content-text btn bg-focus btn2-active">
                         Амвросий
                       </button>
                     </li>
@@ -1618,7 +1615,7 @@
                   </h3>
                   <ul class="catalog__country-content catalog__content">
                     <li class="catalog__content-item">
-                      <button data-path="fish5" class="catalog__content-text btn bg-focus">
+                      <button data-path="fish5" class="catalog__content-text btn bg-focus btn2-active">
                         Босх, Иероним
                       </button>
                     </li>
@@ -2122,7 +2119,7 @@
                       <h4 class="text__left-book">Эволюция графических ст...</h4>
                       <p class="text__left-author">Хеллер, Чваст</p>
                     </div>
-                    <span class="text__right"></span>
+                    <span class="text__right">3 200 руб</span>
                   </div>
                   <button class="editions__item-link">Заказать</button>
                 </li>
@@ -2132,7 +2129,7 @@
                       <h4 class="text__left-book">Искусство и визуальное в...</h4>
                       <p class="text__left-author">Арнхейм, Рудольф</p>
                     </div>
-                    <span class="text__right"></span>
+                    <span class="text__right">2 200 руб</span>
                   </div>
                   <button class="editions__item-link">Заказать</button>
                 </li>
@@ -2202,35 +2199,35 @@
               </svg>              
             </button>
             <div class="swiper5 projects__partners-swiper">                            
-              <ul class="projects__partners-list project__list swiper-wrapper">
-                <li tabindex="0" class="projects__list-item projects__item swiper-slide freelands">
+              <div class="projects__partners-list project__list swiper-wrapper">
+                <a tabindex="0" class="projects__list-item projects__item swiper-slide freelands">
                   <img src="IMG/freeland.png" alt="" class="projects__item-picture">
-                </li>
-                <li tabindex="0" class="projects__list-item projects__item swiper-slide contemporary">
+                </a>
+                <a tabindex="0" class="projects__list-item projects__item swiper-slide contemporary">
                   <img src="IMG/contemporary.png" alt="" class="projects__item-picture">
-                </li>
-                <li tabindex="0" class="projects__list-item projects__item swiper-slide workhouse">
+                </a>
+                <a tabindex="0" class="projects__list-item projects__item swiper-slide workhouse">
                   <img src="IMG/workhouse.png" alt="" class="projects__item-picture">
-                </li>
-                <li tabindex="0" class="projects__list-item projects__item swiper-slide 1849">
+                </a>
+                <a tabindex="0" class="projects__list-item projects__item swiper-slide 1849">
                   <img src="IMG/1849.png" alt="" class="projects__item-picture">
-                </li>
-                <li tabindex="0" class="projects__list-item projects__item swiper-slide hiscox">
+                </a>
+                <a tabindex="0" class="projects__list-item projects__item swiper-slide hiscox">
                   <img src="IMG/hiscox.png" alt="" class="projects__item-picture">
-                </li>
-                <li tabindex="0" class="projects__list-item projects__item swiper-slide camden">
+                </a>
+                <a tabindex="0" class="projects__list-item projects__item swiper-slide camden">
                   <img src="IMG/camden.png" alt="" class="projects__item-picture">
-                </li>
-                <li tabindex="0" class="projects__list-item projects__item swiper-slide stassen">
+                </a>
+                <a tabindex="0" class="projects__list-item projects__item swiper-slide stassen">
                   <img src="IMG/stassen.png" alt="" class="projects__item-picture">
-                </li>
-                <li tabindex="0" class="projects__list-item projects__item swiper-slide watts">
+                </a>
+                <a tabindex="0" class="projects__list-item projects__item swiper-slide watts">
                   <img src="IMG/watts.png" alt="" class="projects__item-picture">
-                </li>
-                <li tabindex="0" class="projects__list-item projects__item swiper-slide esad">
+                </a>
+                <a tabindex="0" class="projects__list-item projects__item swiper-slide esad">
                   <img src="IMG/esad.png" alt="" class="projects__item-picture">
-                </li>
-              </ul>              
+                </a>
+              </div>              
             </div>
             <button class="swiper5__buttons-next">
               <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2265,7 +2262,7 @@
               <div class="contacts__form-2">
                 <input class="contacts__form-phone" type="tel" placeholder="Телефон*" name="phone" id="phone" autocomplete="off">
               </div>
-              <button class="contacts__form-submit" type="submit">Заказать</button>
+              <button class="contacts__form-submit" type="submit" id="submit">Заказать</button>
             </form>
             <div class="contacts__messengers">
               <h3 class="contacts__messengers-head">
@@ -2304,9 +2301,9 @@
       </section>
       <footer class="footer">
         <div class="container footer__container">
-          <div class="header__container-logo header__logo">
-            <a href="" class="header__logo-link header__link">
-              <picture class="header__link-pic">
+          <div class="footer__container-logo footer__logo">
+            <a href="" class="footer__logo-link footer__link">
+              <picture class="footer__link-pic">
                 <source srcset="IMG/logo-320.svg" media="(max-width: 452px)">
                 <source srcset="IMG/Logo-1024.png" media="(max-width: 1240px)">
                 <img src="IMG/Logo.png" alt="Blanchard">
@@ -2358,6 +2355,7 @@
       <script src="JS/tippy-init.js"></script>
       <script src="JS/inputmask.js"></script>
       <script src="JS/inputmask-init.js"></script>
+      <script src="JS/toastify.js"></script>
       <script src="JS/just-validate.min.js"></script>
       <script src="JS/just-validate-init.js"></script>
       <script src="JS/submit.js"></script>

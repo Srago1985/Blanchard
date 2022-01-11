@@ -1,73 +1,167 @@
-!function (e) { "function" != typeof e.matches && (e.matches = e.msMatchesSelector || e.mozMatchesSelector || e.webkitMatchesSelector || function (e) { for (var t = this, o = (t.document || t.ownerDocument).querySelectorAll(e), n = 0; o[n] && o[n] !== t;)++n; return Boolean(o[n]) }), "function" != typeof e.closest && (e.closest = function (e) { for (var t = this; t && 1 === t.nodeType;) { if (t.matches(e)) return t; t = t.parentNode } return null }) }(window.Element.prototype);
+class Modal {
+    constructor(options) {
+        let defaultOptions = {
+            isOpen: () => { },
+            isClose: () => { },
+        }
+        this.options = Object.assign(defaultOptions, options);
+        this.modal = document.querySelector('.modal');
+        this.speed = false;
+        this.animation = false;
+        this.isOpen = false;
+        this.modalContainer = false;
+        this.previousActiveElement = false;
+        this.fixBlocks = document.querySelectorAll('.fix-block');
+        this.focusElements = [
+            'a[href]',
+            'input',
+            'button',
+            'select',
+            'textarea',
+            '[tabindex]'
+        ];
+        this.events();
+    }
 
+    events() {
+        if (this.modal) {
+            document.addEventListener('click', function (e) {
+                const clickedElement = e.target.closest('[data-btn]');
+                if (clickedElement) {
+                    let target = clickedElement.dataset.btn;
+                    let animation = clickedElement.dataset.animation;
+                    let speed = clickedElement.dataset.speed;
+                    this.animation = animation ? animation : 'fade';
+                    this.speed = speed ? parseInt(speed) : 300;
+                    this.modalContainer = document.querySelector(`[data-window="${target}"]`);
+                    this.open();
+                    return;
+                }
 
-document.addEventListener('DOMContentLoaded', function () {
+                if (e.target.closest('.modal-close')) {
+                    this.close();
+                    return;
+                }
+            }.bind(this));
 
-    /* Записываем в переменные массив элементов-кнопок и подложку.
-       Подложке зададим id, чтобы не влиять на другие элементы с классом overlay*/
-    var modalButtons = document.querySelectorAll('.js-open-modal'),
-        overlay = document.querySelector('.js-overlay-modal'),
-        closeButtons = document.querySelectorAll('.js-modal-close');
+            window.addEventListener('keydown', function (e) {
+                if (e.keyCode == 27) {
+                    if (this.isOpen) {
+                        this.close();
+                    }
+                }
 
+                if (e.keyCode == 9 && this.isOpen) {
+                    this.focusCatch(e);
+                    return;
+                }
 
-    /* Перебираем массив кнопок */
-    modalButtons.forEach(function (item) {
+            }.bind(this));
 
-        /* Назначаем каждой кнопке обработчик клика */
-        item.addEventListener('click', function (e) {
+            this.modal.addEventListener('click', function (e) {
+                if (!e.target.classList.contains('modal__container') && !e.target.closest('.modal__container') && this.isOpen) {
+                    this.close();
+                }
+            }.bind(this));
+        }
+    }
 
-            /* Предотвращаем стандартное действие элемента. Так как кнопку разные
-               люди могут сделать по-разному. Кто-то сделает ссылку, кто-то кнопку.
-               Нужно подстраховаться. */
+    open() {
+        this.previousActiveElement = document.activeElement;
+
+        this.modal.style.setProperty('--transition-time', `${this.speed / 1000}s`);
+        this.modal.classList.add('is-open');
+        this.disableScroll();
+
+        this.modalContainer.classList.add('modal-open');
+        this.modalContainer.classList.add(this.animation);
+
+        setTimeout(() => {
+            this.options.isOpen(this);
+            this.modalContainer.classList.add('animate-open');
+            this.isOpen = true;
+            this.focusTrap();
+        }, this.speed);
+    }
+
+    close() {
+        if (this.modalContainer) {
+            this.modalContainer.classList.remove('animate-open');
+            this.modalContainer.classList.remove(this.animation);
+            this.modal.classList.remove('is-open');
+            this.modalContainer.classList.remove('modal-open');
+
+            this.enableScroll();
+            this.options.isClose(this);
+            this.isOpen = false;
+            this.focusTrap();
+        }
+    }
+
+    focusCatch(e) {
+        const focusable = this.modalContainer.querySelectorAll(this.focusElements);
+        const focusArray = Array.prototype.slice.call(focusable);
+        const focusedIndex = focusArray.indexOf(document.activeElement);
+
+        if (e.shiftKey && focusedIndex === 0) {
+            focusArray[focusArray.length - 1].focus();
             e.preventDefault();
+        }
 
-            /* При каждом клике на кнопку мы будем забирать содержимое атрибута data-modal
-               и будем искать модальное окно с таким же атрибутом. */
-            var modalId = this.getAttribute('data-modal'),
-                modalElem = document.querySelector('.modal[data-modal="' + modalId + '"]');
+        if (!e.shiftKey && focusedIndex === focusArray.length - 1) {
+            focusArray[0].focus();
+            e.preventDefault();
+        }
+    }
 
+    focusTrap() {
+        const focusable = this.modalContainer.querySelectorAll(this.focusElements);
+        if (this.isOpen) {
+            focusable[0].focus();
+        } else {
+            this.previousActiveElement.focus();
+        }
+    }
 
-            /* После того как нашли нужное модальное окно, добавим классы
-               подложке и окну чтобы показать их. */
-            modalElem.classList.add('active');
-            overlay.classList.add('active');
-            document.body.classList.add('modal-active');
-        }); // end click
+    disableScroll() {
+        let pagePosition = window.scrollY;
+        this.lockPadding();
+        document.body.classList.add('disable-scroll');
+        document.body.dataset.position = pagePosition;
+        document.body.style.top = -pagePosition + 'px';
+    }
 
-    }); // end foreach
+    enableScroll() {
+        let pagePosition = parseInt(document.body.dataset.position, 10);
+        this.unlockPadding();
+        document.body.style.top = 'auto';
+        document.body.classList.remove('disable-scroll');
+        window.scroll({ top: pagePosition, left: 0 });
+        document.body.removeAttribute('data-position');
+    }
 
-
-    closeButtons.forEach(function (item) {
-
-        item.addEventListener('click', function (e) {
-            var parentModal = this.closest('.modal');
-
-            parentModal.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.classList.remove('modal-active');
+    lockPadding() {
+        let paddingOffset = window.innerWidth - document.body.offsetWidth + 'px';
+        this.fixBlocks.forEach((el) => {
+            el.style.paddingRight = paddingOffset;
         });
+        document.body.style.paddingRight = paddingOffset;
+    }
 
-    }); // end foreach
+    unlockPadding() {
+        this.fixBlocks.forEach((el) => {
+            el.style.paddingRight = '0px';
+        });
+        document.body.style.paddingRight = '0px';
+    }
+}
 
-
-    document.body.addEventListener('keyup', function (e) {
-        var key = e.keyCode;
-
-        if (key == 27) {
-
-            document.querySelector('.modal.active').classList.remove('active');
-            document.querySelector('.overlay').classList.remove('active');
-            document.body.classList.remove('modal-active');
-        };
-    }, false);
-
-
-    overlay.addEventListener('click', function () {
-        document.querySelector('.modal.active').classList.remove('active');
-        this.classList.remove('active');
-        document.body.classList.remove('modal-active');
-    });
-
-    
-
-}); // end ready
+const modal = new Modal({
+    isOpen: (modal) => {
+        console.log(modal);
+        console.log('opened');
+    },
+    isClose: () => {
+        console.log('closed');
+    },
+});
