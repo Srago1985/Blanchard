@@ -1,4 +1,6 @@
-Array.prototype.forEach.call(
-    document.querySelectorAll('.header2__menu'),
-    el => new SimpleBar()
-);
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll('.header2__menu').forEach(elem => {
+        new SimpleBar(elem)
+    })
+});
+

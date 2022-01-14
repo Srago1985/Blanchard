@@ -39,10 +39,15 @@ validation
         {
             rule: 'required',
             errorMessage: 'Введите телефон',
+        },
+        {
+            rule: 'customRegexp',
+            value: /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/,
+            errorMessage: 'Номер телефона должен состоять из 10 цифр'
         },        
     ])
     .onSuccess((ev) => {
-        ev.preventDefault();
+        ev.preventDefault();        
         window.showNotification();
         this.form.reset();        
     })

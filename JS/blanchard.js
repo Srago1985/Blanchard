@@ -60,9 +60,7 @@ function picClick() {
 };
 
 document.body.addEventListener("click", function (x) {
-    var close = x.target   
-
-    console.log(x.target)
+    var close = x.target       
     if (!x.target.closest(".header__search")) {
         input.classList.remove("show");
         lupe.classList.remove("show"); 

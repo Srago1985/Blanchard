@@ -27,7 +27,7 @@
 }
 
 body {
-    font-family: Open Sans, Arial, sans-serif;
+    font-family: 'Open Sans', 'Arial', sans-serif;
     box-sizing: border-box;
     min-width: 320px;
 }
@@ -309,12 +309,13 @@ ul {
     background-color: transparent;
     border: none;
     padding-top: 22px;
-    padding-bottom: 24px;           
+    padding-bottom: 24px;
+    transition: .3s ease-in-out;           
 }
 
 .header2__item svg {
     padding-top: 6px;
-    transition: all .3s ease-in-out;
+    
 }
 
 .header2__item-head {    
@@ -325,25 +326,30 @@ ul {
     text-align: center;
     color: #FFFFFF;
     padding: 0;
+    
 }
 
 .simplebar-scrollbar {
     opacity: 1;
 }
 
+.simplebar-scrollbar.simplebar-visible:before { 
+    opacity: 1; 
+}
+
 .header2__item-head:hover {
     color: #9D5CD0;
-    transition: .3s ease-in-out;
+    
 }
 
 .header2__item-head:hover svg path {
     stroke: #9D5CD0;
-    transition: .3s ease-in-out;
+    transition: .3s ease-in-out; 
 }
 
 .header2__item-head:active svg path {
     stroke: #7943A4;
-    transition: .3s ease-in-out;
+    transition: .3s ease-in-out; 
 }
 
 .click svg {
@@ -551,6 +557,7 @@ ul {
     background: transparent;
     width: 220px;
     color: white;
+    transition: .3s ease-in-out;
 }
 
 .header2__search-input:hover {
@@ -978,6 +985,11 @@ ul {
     transition: .3s ease-in-out;
 }
 
+.swiper1__buttons-prev svg path,
+.swiper1__buttons-next svg path{
+    transition: .3s ease-in-out;
+}
+
 .swiper1__buttons-prev svg path:hover {
     fill: #9D5CD0;
 }
@@ -1347,6 +1359,10 @@ ul {
     transition: all .3s ease-in-out;
 }
 
+.catalog__btn svg path {
+    transition: all .3s ease-in-out;
+}
+
 .ui-accordion .ui-accordion-content {
     flex-wrap: wrap;
     flex-direction: column;
@@ -1362,6 +1378,10 @@ ul {
     font-size: 16px;
     line-height: 31px;
     color: #333333;
+}
+
+.catalog__content-text.btn.bg-focus {
+    transition: .3s ease-in-out;
 }
 
 .lorem {
@@ -1726,8 +1746,7 @@ ul {
 }
 
 .events__card-text {
-    display: block;
-    
+    display: block;    
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -1737,8 +1756,7 @@ ul {
 }
 
 .events__card-link {
-    display: block;
-    
+    display: block;    
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -1747,6 +1765,7 @@ ul {
     position: absolute;
     bottom: 43px;    
     left: 50px;
+    transition: all .3s ease-in-out;
 }
 
 .events__card-link::after {
@@ -1942,7 +1961,7 @@ ul {
     width: 12px;
     height: 12px;
     border: 1px solid #ffffff;
-    transition: border-color 0.3s ease;
+    transition: 0.3s ease-in-out;
     margin-right: 12px;
 }
 
@@ -1957,7 +1976,7 @@ ul {
     background-color: #C283F3;
     opacity: 0;
     transform: translate(-50%, -50%);
-    transition: opacity 0.3s ease;
+    transition: 0.3s ease-in-out;
 }
 
 .checkbox:focus:not(:checked) ~ .checkbox-content .visual-check,
@@ -2018,14 +2037,14 @@ ul {
     width: 60px;
     height: 37px;
     padding-left: 10px;
-    background: rgba(157, 92, 208, 0.5);
-    
+    background: rgba(157, 92, 208, 0.5);    
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
     line-height: 32px;    
     color: #FFFFFF;
     border: 1px solid transparent;
+    transition: .3s ease-in-out;
 }
 
 .price__input:hover {
@@ -2162,6 +2181,12 @@ input::-webkit-inner-spin-button {
     cursor: pointer;
     transition: .3s ease-in-out;
 }
+
+.swiper4__buttons-prev svg path,
+.swiper4__buttons-next svg path{
+    transition: .3s ease-in-out;
+}
+
 
 .swiper4__buttons-prev svg path:hover {
     fill: #9D5CD0;
@@ -2333,7 +2358,8 @@ input::-webkit-inner-spin-button {
     height: 150px;    
     border: 1px solid #CACACA;
     box-sizing: border-box;    
-    cursor: pointer;           
+    cursor: pointer; 
+    transition: .3s ease-in-out;              
 }
 
 .projects__item-picture {
@@ -2347,6 +2373,7 @@ input::-webkit-inner-spin-button {
     opacity: .5;
     height:42%;
     width: 54%;
+    transition: .3s ease-in-out;
 }
 
 .projects__item:focus,
@@ -2372,6 +2399,11 @@ input::-webkit-inner-spin-button {
     height: 34px;
     width: 34px;
     cursor: pointer;
+}
+
+.swiper5__buttons-prev svg path,
+.swiper5__buttons-next svg path {
+    transition: .3s ease-in-out;
 }
 
 .swiper5__buttons-prev:focus,
@@ -2413,8 +2445,7 @@ input::-webkit-inner-spin-button {
 
 .tippy-box[data-theme~='projects'] {
     background-color: #9D5CD0;
-    color: white;
-    
+    color: white;    
     font-style: normal;
     font-weight: 600;
     font-size: 12px;
@@ -2462,9 +2493,14 @@ input::-webkit-inner-spin-button {
     fill: white; 
 }
 
+.projects__text-tooltip svg path {
+    transition: .3s ease-in-out;
+}
+
 .text-link {
     color: #9D5CD0;
     border-bottom: 1px solid transparent;
+    transition: .3s ease-in-out;
 }
 
 .text-link:focus-visible {
@@ -2558,6 +2594,7 @@ input::-webkit-inner-spin-button {
     font-size: 16px;
     line-height: 32px;
     color: #333333;
+    transition: .3s ease-in-out;
 }
 
 .contacts__form-name::placeholder {    
@@ -2586,6 +2623,7 @@ input::-webkit-inner-spin-button {
     font-size: 16px;
     line-height: 32px;
     color: #333333;
+    transition: .3s ease-in-out;
 }
 
 .contacts__form-phone::placeholder {    
@@ -2627,8 +2665,7 @@ input::-webkit-inner-spin-button {
     flex-direction: row;
     align-items: center;
     margin-bottom: 37px;
-    padding: 14px 33px;
-    
+    padding: 14px 33px;    
     font-style: normal;
     font-weight: bold;
     font-size: 18px;
@@ -2685,6 +2722,11 @@ input::-webkit-inner-spin-button {
 
 .whatsapp {
     margin-right: 16px;
+}
+
+.whatsapp svg,
+.telegram svg {
+    transition: .3s ease-in-out;
 }
 
 .whatsapp:focus svg,
@@ -2745,6 +2787,10 @@ input::-webkit-inner-spin-button {
 
 .footer__socials-item:active svg path {
     fill: #9D5CD0;
+}
+
+.footer__socials-item svg path {
+    transition: .3s ease-in-out;
 }
 
 @keyframes pulse {
@@ -3560,9 +3606,7 @@ input::-webkit-inner-spin-button {
         bottom: 35px;
     }
 
-    .projects__item-picture {
-        /* height: 45%;
-        width: 80%; */
+    .projects__item-picture {        
         object-fit: cover;
     }
 
@@ -4312,7 +4356,6 @@ input::-webkit-inner-spin-button {
         width: 35px;
         height: 35px;
         background-size: contain;
-        margin-right: 29px;
     }
 
     .tabs__head {
