@@ -23,7 +23,7 @@
 <body>    
     <header class="header">
       <div class="container header__container">
-        <button class="header__menu-burger menu-burger menu-burger__header" aria-label="Открыть меню">
+        <button class="header__menu-burger menu-burger" aria-label="Открыть меню">
           <span></span>
         </button>
         <div class="header__container-logo header__logo">
@@ -420,7 +420,7 @@
 
       <section class="gallery" id="gallery" aria-label="Галерея картин">
         <div class="container gallery__container">
-          <div class="gallery__left">
+          <div class="gallery__left select">
             <h2 class="gallery__head">
               Галерея
             </h2>
@@ -558,24 +558,24 @@
       <section class="catalog" id="catalog" aria-label="Каталог художников">
         <div class="container catalog__container">
           <div class="catalog__heading">
-            <div class="tabs__head">
+            <div class="tabs">
               <h2 class="catalog__heading-head">
                 Каталог
               </h2>
               <ul class="tabs__list">
-                <li class="tab__list-item">
+                <li class="tabs__list-item">
                   <button data-path="france" aria-label="Франция" class="catalog__heading-country catalog__country france"></button>
                 </li>
-                <li class="tab__list-item">
+                <li class="tabs__list-item">
                   <button data-path="germany" aria-label="Германия" class="catalog__heading-country catalog__country germany"></button>
                 </li>
-                <li class="tab__list-item">
+                <li class="tabs__list-item">
                   <button data-path="italy" aria-label="Италия" class="catalog__heading-country catalog__country italy btn-active"></button>
                 </li>
-                <li class="tab__list-item">
+                <li class="tabs__list-item">
                   <button data-path="russia" aria-label="Россия" class="catalog__heading-country catalog__country russia"></button>
                 </li>
-                <li class="tab__list-item">
+                <li class="tabs__list-item">
                   <button data-path="belgium" aria-label="Бельгия" class="catalog__heading-country catalog__country belgium"></button>
                 </li> 
               </ul>
@@ -2022,7 +2022,7 @@
                 </label>
               </div>            
               <div class="editions__form-price editions__price">
-                <h3 class="price__head">
+                <h3 class="editions__price-head">
                   Цена
                 </h3>
                 <span class="price">
@@ -2199,7 +2199,7 @@
               </svg>              
             </button>
             <div class="swiper5 projects__partners-swiper">                            
-              <div class="projects__partners-list project__list swiper-wrapper">
+              <div class="projects__partners-list projects__list swiper-wrapper">
                 <a tabindex="0" class="projects__list-item projects__item swiper-slide freelands">
                   <img src="IMG/freeland.png" alt="" class="projects__item-picture">
                 </a>
@@ -2252,7 +2252,7 @@
             <p class="contacts__left-adress">
               Леонтьевский переулок, дом 5/1
             </p>
-            <form action="https://formspree.io/f/xbjwjjdz" method="POST" class="contacts__form" id="form">
+            <form class="contacts__form" id="form">
               <h3 class="contacts__form-head">
                 Заказать обратный звонок
               </h3>
@@ -2358,7 +2358,6 @@
       <script src="JS/toastify.js"></script>
       <script src="JS/just-validate.min.js"></script>
       <script src="JS/just-validate-init.js"></script>
-      <script src="JS/submit.js"></script>
       <script src="JS/maps.js"></script>      
       <script src="JS/blanchard.js"></script>
   </body>

@@ -47,9 +47,22 @@ validation
         },        
     ])
     .onSuccess((ev) => {
-        ev.preventDefault();        
-        window.showNotification();
-        this.form.reset();        
+            ev.preventDefault();
+            let form = document.getElementById("form");
+            async function handleSubmit() {
+                let data = new FormData(form);
+                fetch("https://formspree.io/f/xbjwjjdz", {
+                    method: "POST",
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+            }
+            handleSubmit()
+            window.showNotification();
+            this.form.reset();
     })
+    
     
     

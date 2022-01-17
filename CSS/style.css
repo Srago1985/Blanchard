@@ -68,7 +68,7 @@ ul {
     display: flex;    
 }
 
-.menu-burger__header {
+.menu-burger {
     display: none;
 }
 
@@ -1090,7 +1090,7 @@ ul {
     display: block;
 }
 
-.tabs__head {
+.tabs {
     display: flex;
     align-items: center;
     margin-bottom: 17px;
@@ -2013,7 +2013,7 @@ ul {
     border-radius: 5px;    
 }
 
-.price__head {
+.editions__price-head {
     margin: 0;
     margin-bottom: 6px;
     font-style: normal;
@@ -2979,7 +2979,7 @@ input::-webkit-inner-spin-button {
         font-size: 24px;
     }
 
-    .menu-burger__header {
+    .menu-burger {
         display: block;
         cursor: pointer;
         border: none;
@@ -2992,9 +2992,9 @@ input::-webkit-inner-spin-button {
         top: 2px;        
     }
 
-    .menu-burger__header span,
-    .menu-burger__header:before,
-    .menu-burger__header::after {
+    .menu-burger span,
+    .menu-burger:before,
+    .menu-burger::after {
         left: 0;
         width: 28px;
         height: 3.65px;
@@ -3003,41 +3003,41 @@ input::-webkit-inner-spin-button {
         margin: 0 auto;
     }
 
-    .menu-burger__header span {
+    .menu-burger span {
         top: 16px;
     }
 
-    .menu-burger__header:before {
+    .menu-burger:before {
         width: 36px;
         top: 4px;
     }
 
-    .menu-burger__header:after {
+    .menu-burger:after {
         bottom: 0%;
         width: 24px;
         top: 28px;
     }
 
-    .menu-burger__header:after, 
-    .menu-burger__header:before {
+    .menu-burger:after, 
+    .menu-burger:before {
         content: '';
     }
 
-    .menu-burger__header.open-menu {
+    .menu-burger.open-menu {
         z-index: 16;
         transition: all .3s;
     }
 
-    .menu-burger__header.open-menu span {
+    .menu-burger.open-menu span {
         opacity: 0;
     }
 
-    .menu-burger__header.open-menu::before {
+    .menu-burger.open-menu::before {
         transform: rotate(45deg) translateY(16px) translateX(10px);
         top: 0;
     }
 
-    .menu-burger__header.open-menu::after {
+    .menu-burger.open-menu::after {
         width: 36px;
         transform: rotate(135deg) translateY(6px);
         top: 24px;
@@ -3309,7 +3309,7 @@ input::-webkit-inner-spin-button {
 
 @media (max-width: 992px) {
     
-    .menu-burger__header {
+    .menu-burger {
         margin-right: auto;
     }
 
@@ -3471,7 +3471,7 @@ input::-webkit-inner-spin-button {
         padding-top: 80px;
     }
 
-    .tabs__head {
+    .tabs {
         margin-bottom: 16px;
     }
 
@@ -3874,7 +3874,7 @@ input::-webkit-inner-spin-button {
 
 @media(max-width:666px) {      
 
-    .tabs__head {
+    .tabs {
         display: block;
     }
     
@@ -4059,38 +4059,38 @@ input::-webkit-inner-spin-button {
         top: -1px;
     }
 
-    .menu-burger__header {
+    .menu-burger {
         width: 25px;
         height: 18px;
     }
 
-    .menu-burger__header:before {
+    .menu-burger:before {
         width: 25px;
         height: 2px;
         top: 1px;
     }
 
-    .menu-burger__header::after {
+    .menu-burger::after {
         width: 10px;
         height: 2px;
         top: 17px;
     }
 
-    .menu-burger__header.open-menu::before {
+    .menu-burger.open-menu::before {
         width: 21px;
         height: 2px;
         top: -10px;
         right: 2px;
     }
 
-    .menu-burger__header.open-menu::after {
+    .menu-burger.open-menu::after {
         width: 21px;
         height: 2px;
         top: 13px;
         right: 2px;
     }
 
-    .menu-burger__header span {
+    .menu-burger span {
         width: 16px;
         height: 2px;
         top: 9px;
@@ -4358,7 +4358,7 @@ input::-webkit-inner-spin-button {
         background-size: contain;
     }
 
-    .tabs__head {
+    .tabs {
         flex-wrap: wrap;
         margin-bottom: 21px;
     }
