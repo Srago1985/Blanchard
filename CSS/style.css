@@ -27,7 +27,7 @@
 }
 
 body {
-    font-family: 'Open Sans', 'Arial', sans-serif;
+    font-family: 'Open Sans', 'Arial', sans-serif; 
     box-sizing: border-box;
     min-width: 320px;
 }
@@ -1531,7 +1531,8 @@ ul {
     color: #9D5CD0;
 }
 
-.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {    
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
+    font-family: 'Open Sans';    
     font-style: normal;
     font-weight: normal;
     font-size: 16px;    
@@ -2829,11 +2830,7 @@ input::-webkit-inner-spin-button {
     
     .header__logo {
         margin: 0;
-        height: 42px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        height: 42px;       
     }
 
     .header__nav2 {
@@ -3606,10 +3603,6 @@ input::-webkit-inner-spin-button {
         bottom: 35px;
     }
 
-    .projects__item-picture {        
-        object-fit: cover;
-    }
-
     .contacts__left {
         padding-left: 48px;
         padding-right: 45px;
@@ -3868,6 +3861,10 @@ input::-webkit-inner-spin-button {
 
     .swiper4__buttons {
         display: none;
+    }
+
+    .swiper-pagination-clickable .swiper-pagination-bullet {
+        background: #666666;
     }
 
     
@@ -4567,6 +4564,8 @@ input::-webkit-inner-spin-button {
     .swiper5__buttons-next {
         bottom: 16px;
     }
+
+    
 
 }
 }
