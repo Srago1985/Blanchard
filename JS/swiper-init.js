@@ -23,7 +23,7 @@ const swiper1 = new Swiper('.swiper1', {
         prevEl: '.swiper1__buttons-prev',
     },
     breakpoints: {
-        451: {
+        453: {
             slidesPerView: 2,
             slidesPerGroup: 2,
             spaceBetween: 34,
@@ -104,7 +104,7 @@ const swiper3 = new Swiper('.swiper4', {
             slidesPerGroup: 2,
         },
 
-        1400: {
+        1500: {
             slidesPerView: 3,
             slidesPerGroup: 3,
             spaceBetween: 50,

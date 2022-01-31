@@ -156,12 +156,4 @@ class Modal {
     }
 }
 
-const modal = new Modal({
-    isOpen: (modal) => {
-        console.log(modal);
-        console.log('opened');
-    },
-    isClose: () => {
-        console.log('closed');
-    },
-});
+const modal = new Modal();

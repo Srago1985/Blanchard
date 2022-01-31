@@ -47,6 +47,7 @@ const cross = document.querySelector(".header__search-close");
 
 pic.addEventListener("click", picClick);
 cross.addEventListener("click", picClick);
+cross.addEventListener("click", reset)
 function picClick() {
     
     input.classList.toggle("show");
@@ -59,15 +60,19 @@ function picClick() {
     }
 };
 
+function reset() {
+    input.value = "";
+}
+
 document.body.addEventListener("click", function (x) {
     var close = x.target       
     if (!x.target.closest(".header__search")) {
-        input.classList.remove("show");
+        input.classList.remove("show");        
         lupe.classList.remove("show"); 
         search.classList.remove("open");
         pic.classList.remove("close");
         button.classList.remove("show");
-        cross.classList.remove("show")
+        cross.classList.remove("show");                       
     }
 });
 
@@ -77,7 +82,7 @@ let exh = document.querySelector(".exhibition")
 
 let changeHidden = function() {
     cards.forEach(el => el.classList.toggle("hidden"));
-    if (document.documentElement.clientWidth < 770) {
+    if (document.documentElement.clientWidth < 993) {
         exh.classList.toggle("hidden")
     }
 };
