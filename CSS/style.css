@@ -3080,8 +3080,7 @@ input::-webkit-inner-spin-button {
     .hero__head {
         max-width: 587px;
         margin: 0;
-        margin-bottom: 13px;
-        letter-spacing: -2px;
+        margin-bottom: 13px;        
     }
 
 
@@ -3314,8 +3313,7 @@ input::-webkit-inner-spin-button {
     }
 
     .hero__head {
-        margin-bottom: 10px;
-        letter-spacing: -2px;
+        margin-bottom: 10px;        
     }
 
     .hero__text {
