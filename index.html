@@ -7,14 +7,7 @@
     <title>Blanchard</title>
     <link rel="icon" href="IMG/favicon.svg">    
     <link rel="stylesheet" href="CSS/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
-    <script src="//code.jquery.com/jquery-1.12.4.JS"></script>
-    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.JS"></script>
-    <script src="JS/accordion-init.js"></script>
     <link rel="stylesheet" href="CSS/choices.min.css"/>
-    <script src="JS/swiper-bundle.min.js"></script>    
-    <script src="https://api-maps.yandex.ru/2.1/?apikey=ваш_API-ключ&lang=ru_RU"></script>
     <link rel="stylesheet" href="CSS/simplebar.css">
     <link rel="stylesheet" href="CSS/toastify.css">
     <link rel="stylesheet" href="CSS/normalize.css">
@@ -26,54 +19,54 @@
         <button class="header__menu-burger menu-burger" aria-label="Открыть меню">
           <span></span>
         </button>
-        <div class="header__container-logo header__logo">
-          <a href="" class="header__logo-link header__link">
-            <picture class="header__link-pic">
+        <div class="header__logo">
+          <a href="" class="header__logo-link">
+            <picture class="header__logo-pic">
               <source srcset="IMG/logo-320.svg" media="(max-width: 452px)">
               <source srcset="IMG/Logo-1024.png" media="(max-width: 1240px)">
               <img src="IMG/Logo.png" alt="Blanchard">
             </picture>
           </a>
         </div>
-        <nav class="header__container-nav header__nav2">
-          <ul class="header__nav2-menu header__menu2">
-            <li class="header__menu2-item">
-              <a href="#about" class="header__nav-item btn bg-focus" aria-label="О нас">
+        <nav class="header__nav">
+          <ul class="header__menu">
+            <li class="header__menu-item">
+              <a href="#about" class="header__menu-link btn bg-focus" aria-label="О нас">
                 О нас
               </a>
             </li>
-            <li class="header__menu2-item">
-              <a href="#gallery" class="header__nav-item btn bg-focus" aria-label="Галерея">
+            <li class="header__menu-item">
+              <a href="#gallery" class="header__menu-link btn bg-focus" aria-label="Галерея">
                 Галерея
               </a>
             </li>
-            <li class="header__menu2-item">
-              <a href="#catalog" class="header__nav-item btn bg-focus" aria-label="Каталог"> 
+            <li class="header__menu-item">
+              <a href="#catalog" class="header__menu-link btn bg-focus" aria-label="Каталог"> 
                 Каталог
               </a>
             </li>
-            <li class="header__menu2-item">
-              <a href="#events" class="header__nav-item btn bg-focus" aria-label="События">
+            <li class="header__menu-item">
+              <a href="#events" class="header__menu-link btn bg-focus" aria-label="События">
                 События
               </a>
             </li>
-            <li class="header__menu2-item">
-              <a href="#editions" class="header__nav-item btn bg-focus" aria-label="Издания">
+            <li class="header__menu-item">
+              <a href="#editions" class="header__menu-link btn bg-focus" aria-label="Издания">
                 Издания
               </a>
             </li>
-            <li class="header__menu2-item">
-              <a href="#projects" class="header__nav-item btn bg-focus" aria-label="Проекты">
+            <li class="header__menu-item">
+              <a href="#projects" class="header__menu-link btn bg-focus" aria-label="Проекты">
                 Проекты
               </a>
             </li>
-            <li class="header__menu2-item">
-              <a href="#contacts" class="header__nav-item btn bg-focus" aria-label="Контакты">
+            <li class="header__menu-item">
+              <a href="#contacts" class="header__menu-link btn bg-focus" aria-label="Контакты">
                 Контакты
               </a>
             </li>
           </ul>
-          <a href="" class="header__container-login header__login" aria-label="Войти">
+          <a href="" class="header__login" aria-label="Войти">
             <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M5.12056 9.09278L6.13889 10.1111L9.75 6.5L6.13889 2.88889L5.12056 3.90722L6.98389 5.77778H0V7.22222H6.98389L5.12056 9.09278ZM11.5556 0H1.44444C0.642778 0 0 0.65 0 1.44444V4.33333H1.44444V1.44444H11.5556V11.5556H1.44444V8.66667H0V11.5556C0 12.35 0.642778 13 1.44444 13H11.5556C12.35 13 13 12.35 13 11.5556V1.44444C13 0.65 12.35 0 11.5556 0Z"
@@ -460,34 +453,34 @@
               </div>              
               <div class="swiper-wrapper">                
                 <div tabindex="0" class="swiper-slide gallery__slide slide5 modal-btn" data-btn="first">
-                  <img src="IMG/gallery1.jpg" alt="" class="gallery__slide-pic">
+                  <img src="IMG/gallery1.jpg" alt="Картина в стиле импрессионизма" class="gallery__slide-pic" loading="lazy">
                 </div>                
                 <div tabindex="0" class="swiper-slide gallery__slide slide4">
-                  <img src="IMG/gallery2.jpg" alt="" class="gallery__slide-pic">
+                  <img src="IMG/gallery2.jpg" alt="Пейзаж" class="gallery__slide-pic" loading="lazy">
                 </div>
                 <div tabindex="0" class="swiper-slide gallery__slide slide6">
-                  <img src="IMG/gallery3.jpg" alt="" class="gallery__slide-pic">
+                  <img src="IMG/gallery3.jpg" alt="Портрет" class="gallery__slide-pic" loading="lazy">
                 </div>
                 <div tabindex="0" class="swiper-slide gallery__slide slide7">
-                  <img src="IMG/gallery4.jpg" alt="" class="gallery__slide-pic">
+                  <img src="IMG/gallery4.jpg" alt="Натюрморт" class="gallery__slide-pic" loading="lazy">
                 </div>
                 <div tabindex="0" class="swiper-slide gallery__slide slide8">
-                  <img src="IMG/gallery5.jpg" alt="" class="gallery__slide-pic">
+                  <img src="IMG/gallery5.jpg" alt="Абстракция" class="gallery__slide-pic" loading="lazy">
                 </div>
                 <div tabindex="0" class="swiper-slide gallery__slide slide9">
-                  <img src="IMG/gallery6.jpg" alt="" class="gallery__slide-pic">
+                  <img src="IMG/gallery6.jpg" alt="Картина эпохи Возрождения" class="gallery__slide-pic" loading="lazy">
                 </div>
                 <div tabindex="0" class="swiper-slide gallery__slide slide10">
-                  <img src="IMG/gallery7.jpg" alt="" class="gallery__slide-pic">
+                  <img src="IMG/gallery7.jpg" alt="Современное искусство" class="gallery__slide-pic" loading="lazy">
                 </div>
                 <div tabindex="0" class="swiper-slide gallery__slide slide11">
-                  <img src="IMG/gallery8.jpg" alt="" class="gallery__slide-pic">
+                  <img src="IMG/gallery8.jpg" alt="Классическая живопись" class="gallery__slide-pic" loading="lazy">
                 </div>
                 <div tabindex="0" class="swiper-slide gallery__slide slide12">
-                  <img src="IMG/gallery9.jpg" alt="" class="gallery__slide-pic">
+                  <img src="IMG/gallery9.jpg" alt="Экспрессионизм" class="gallery__slide-pic" loading="lazy">
                 </div>
                 <div tabindex="0" class="swiper-slide gallery__slide slide13">
-                  <img src="IMG/gallery10.jpg" alt="" class="gallery__slide-pic">
+                  <img src="IMG/gallery10.jpg" alt="Сюрреализм" class="gallery__slide-pic" loading="lazy">
                 </div>
                 <div tabindex="0" class="swiper-slide gallery__slide slide14">
                   <img src="IMG/gallery11.jpg" alt="" class="gallery__slide-pic">
@@ -2348,23 +2341,27 @@
         </div>
       </footer>      
     </main>
-      <script src="JS/simplebar.min.js"></script>
-      <script src="JS/simplebar-init.js"></script>
-      <script src="JS/choices.min.js"></script>
-      <script src="JS/choices-init.js"></script>            
-      <script src="JS/burger.js"></script>
-      <script src="JS/tabs.js"></script>
-      <script src="JS/swiper-init.js"></script>
-      <script src="JS/modal.js"></script>
-      <script src="JS/popper.min.js"></script>
-      <script src="JS/tippy.js"></script>
-      <script src="JS/tippy-init.js"></script>
-      <script src="JS/inputmask.js"></script>
-      <script src="JS/inputmask-init.js"></script>
-      <script src="JS/toastify.js"></script>
-      <script src="JS/just-validate.min.js"></script>
-      <script src="JS/just-validate-init.js"></script>
-      <script src="JS/maps.js"></script>      
-      <script src="JS/blanchard-2.js"></script>
+      <script defer src="JS/simplebar.min.js"></script>
+      <script defer src="JS/simplebar-init.js"></script>
+      <script defer src="JS/choices.min.js"></script>
+      <script defer src="JS/choices-init.js"></script>
+      <!-- Объединенный файл основной логики -->
+      <script defer src="JS/blanchard-app.js"></script>
+      <!-- Оптимизация изображений -->
+      <script defer src="JS/image-optimizer.js"></script>
+      <script defer src="JS/swiper-bundle.min.js"></script>
+      <script defer src="JS/swiper-init.js"></script>
+      <script defer src="JS/modal.js"></script>
+      <script defer src="JS/popper.min.js"></script>
+      <script defer src="JS/tippy.js"></script>
+      <script defer src="JS/tippy-init.js"></script>
+      <script defer src="JS/inputmask.js"></script>
+      <script defer src="JS/inputmask-init.js"></script>
+      <script defer src="JS/toastify.js"></script>
+      <script defer src="JS/just-validate.min.js"></script>
+      <script defer src="JS/just-validate-init.js"></script>
+      <script defer src="https://api-maps.yandex.ru/2.1/?apikey=ваш_API-ключ&lang=ru_RU"></script>
+      <script defer src="JS/maps.js"></script>
+      <script defer src="JS/blanchard-2.js"></script>
   </body>
 </html>

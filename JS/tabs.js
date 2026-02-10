@@ -1,44 +1,88 @@
-document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.catalog__country').forEach(function (tabsBtn) {
-        
-        tabsBtn.addEventListener('click', function (event) {
-            const path = event.currentTarget.dataset.path
-            
-            document.querySelectorAll('.tabs-panel').forEach(function (tabsContent) {
-                tabsContent.classList.remove('tabs-panel-active')
+// Класс для управления табами
+class TabsManager {
+    constructor() {
+        this.init();
+    }
+    
+    // Универсальный метод для переключения табов
+    switchTabs(buttons, panels, activeClass, activePanelClass) {
+        buttons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                const path = event.currentTarget.dataset.path;
+                const targetPanel = document.querySelector(`[data-target="${path}"]`);
                 
-            });
-            document.querySelectorAll(".catalog__country").forEach(el => {
-                el.classList.remove("btn-active");
-            });
-            document.querySelector(`[data-target="${path}"]`).classList.add('tabs-panel-active');
-            this.classList.add('btn-active');
-        })
-    });
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.catalog__content-text').forEach(function (tabsBtn2) {
-        
-        tabsBtn2.addEventListener('click', function (event2) {
-            const path2 = event2.currentTarget.dataset.path
-            
-            document.querySelectorAll('.portrait-panel').forEach(function (tabsContent2) {
-                tabsContent2.classList.remove('portrait-panel-active')
+                if (!targetPanel) {
+                    console.warn(`Target panel not found for path: ${path}`);
+                    return;
+                }
                 
+                // Убираем активные классы со всех кнопок и панелей
+                buttons.forEach(btn => btn.classList.remove(activeClass));
+                panels.forEach(panel => panel.classList.remove(activePanelClass));
+                
+                // Добавляем активный класс к текущей кнопке и панели
+                button.classList.add(activeClass);
+                targetPanel.classList.add(activePanelClass);
+                
+                // Прокрутка для мобильных устройств
+                if (window.innerWidth < 667) {
+                    targetPanel.scrollIntoView({ behavior: 'smooth' });
+                }
             });
-            document.querySelector(`[data-target="${path2}"]`).classList.add('portrait-panel-active');
-            document.querySelectorAll(".catalog__content-text").forEach(el => {
-                el.classList.remove("btn2-active");
-            });
-            this.classList.add('btn2-active');
-            function scroll() {
-                document.querySelector(`[data-target="${path2}"]`).scrollIntoView({behavior: "smooth"})
-            };
-            if (document.documentElement.clientWidth < 667) {
-                scroll();
-            }
         });
-    });
-});
+    }
+    
+    // Инициализация табов стран
+    initCountryTabs() {
+        const countryButtons = document.querySelectorAll('.catalog__country');
+        const countryPanels = document.querySelectorAll('.tabs-panel');
+        
+        if (countryButtons.length && countryPanels.length) {
+            this.switchTabs(countryButtons, countryPanels, 'btn-active', 'tabs-panel-active');
+        }
+    }
+    
+    // Инициализация табов портретов
+    initPortraitTabs() {
+        const portraitButtons = document.querySelectorAll('.catalog__content-text');
+        const portraitPanels = document.querySelectorAll('.portrait-panel');
+        
+        if (portraitButtons.length && portraitPanels.length) {
+            this.switchTabs(portraitButtons, portraitPanels, 'btn2-active', 'portrait-panel-active');
+        }
+    }
+    
+    // Общая инициализация
+    init() {
+        this.initCountryTabs();
+        this.initPortraitTabs();
+        
+        // Поддержка клавиатуры (стрелки влево/вправо для навигации)
+        document.addEventListener('keydown', (e) => {
+            const activeButton = document.querySelector('.catalog__country.btn-active, .catalog__content-text.btn2-active');
+            
+            if (!activeButton || !['ArrowLeft', 'ArrowRight'].includes(e.key)) return;
+            
+            const isCountryTab = activeButton.classList.contains('catalog__country');
+            const buttons = Array.from(
+                document.querySelectorAll(isCountryTab ? '.catalog__country' : '.catalog__content-text')
+            );
+            
+            const currentIndex = buttons.indexOf(activeButton);
+            let nextIndex;
+            
+            if (e.key === 'ArrowRight') {
+                nextIndex = (currentIndex + 1) % buttons.length;
+            } else {
+                nextIndex = currentIndex === 0 ? buttons.length - 1 : currentIndex - 1;
+            }
+            
+            buttons[nextIndex]?.click();
+        });
+    }
+}
 
+// Инициализация после загрузки DOM
+document.addEventListener('DOMContentLoaded', () => {
+    new TabsManager();
+});
