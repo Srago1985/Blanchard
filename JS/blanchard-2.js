@@ -1,216 +1,173 @@
-// Главный класс для управления интерактивностью страницы
-class BlanchardApp {
-    constructor() {
-        // Кешируем все элементы DOM один раз
-        this.elements = {
-            // Поиск
-            searchInput: document.querySelector(".header__search-input"),
-            searchLupe: document.querySelector(".header__search-pic320"),
-            searchContainer: document.querySelector(".header__search"),
-            searchPic: document.querySelector(".header__search-pic"),
-            searchButton: document.querySelector(".header__search-button"),
-            searchClose: document.querySelector(".header__search-close"),
-            
-            // Меню header2
-            menuContainers: document.querySelectorAll('.header2__menu-container'),
-            menuHeads: document.querySelectorAll('.header2__item-head'),
-            
-            // События
-            eventsCards: document.querySelectorAll(".events__card-hidden"),
-            eventsBtn: document.querySelector(".events__btn"),
-            exhibition: document.querySelector(".exhibition"),
-            
-            // Прочее
-            checkHeading: document.querySelector('.js-check-heading'),
-            contacts: document.querySelector('.contacts'),
-        };
-        
-        this.state = {
-            openMenu: null,
-            isMobile: () => window.innerWidth < 993,
-        };
-        
-        this.init();
-    }
-    
-    // Переключение поиска
-    toggleSearch() {
-        const { searchInput, searchLupe, searchContainer, searchPic, searchButton, searchClose } = this.elements;
-        
-        searchInput?.classList.toggle("show");
-        searchLupe?.classList.toggle("show");
-        searchContainer?.classList.toggle("open");
-        searchPic?.classList.toggle("close");
-        searchButton?.classList.toggle("show");
-        
-        if (this.state.isMobile() && searchClose) {
-            searchClose.classList.toggle("show");
+const picClick = () => {
+    const input = document.querySelector(".header__search-input");
+    const lupe = document.querySelector(".header__search-pic320");
+    const search = document.querySelector(".header__search");
+    const pic = document.querySelector(".header__search-pic");
+    const button = document.querySelector(".header__search-button");
+    const cross = document.querySelector(".header__search-close");
+
+    input.classList.toggle("show");
+    lupe.classList.toggle("show");
+    search.classList.toggle("open");
+    pic.classList.toggle("close");
+    button.classList.toggle("show");
+
+    if (document.documentElement.clientWidth < 993) {
+        if (cross) {
+            cross.classList.toggle("show");
+            cross.addEventListener("click", reset);
         }
     }
-    
-    // Закрытие поиска
-    closeSearch() {
-        const { searchInput, searchLupe, searchContainer, searchPic, searchButton, searchClose } = this.elements;
-        
-        searchInput?.classList.remove("show");
-        searchLupe?.classList.remove("show");
-        searchContainer?.classList.remove("open");
-        searchPic?.classList.remove("close");
-        searchButton?.classList.remove("show");
-        
-        if (this.state.isMobile() && searchClose) {
-            searchClose.classList.remove("show");
-        }
-    }
-    
-    // Сброс поискового запроса
-    resetSearch() {
-        if (this.elements.searchInput) {
-            this.elements.searchInput.value = "";
-        }
-    }
-    
-    // Управление меню header2
-    handleMenuClick(target) {
-        const { menuContainers, menuHeads } = this.elements;
-        
-        if (this.state.openMenu && (target === this.state.openMenu || this.state.openMenu.contains(target))) {
-            return;
-        }
-        
-        if (target.classList.contains('header2__item-head')) {
-            const index = Array.from(menuHeads).indexOf(target);
-            
-            if (index !== -1) {
-                if (this.state.openMenu && this.state.openMenu !== menuContainers[index]) {
-                    this.state.openMenu.classList.remove("show");
-                }
-                this.state.openMenu = menuContainers[index];
-                this.state.openMenu.classList.toggle("show");
-            }
-            return;
-        }
-        
-        if (this.state.openMenu) {
-            this.state.openMenu.classList.remove("show");
-            this.state.openMenu = null;
-        }
-    }
-    
-    // Переключение активного класса для заголовков меню
-    toggleMenuHeadClass(target) {
-        const clickedHead = target.closest('.header2__item-head');
-        
-        if (clickedHead?.closest('.click')) {
-            clickedHead.classList.remove('click');
-            return;
-        }
-        
-        this.elements.menuHeads.forEach(item => item.classList.remove('click'));
-        clickedHead?.classList.add('click');
-    }
-    
-    // Переключение скрытых карточек событий
-    toggleEventsCards() {
-        const { eventsCards, eventsBtn, exhibition } = this.elements;
-        
-        eventsCards.forEach(card => card.classList.toggle("hidden"));
-        
-        if (this.state.isMobile() && exhibition) {
-            exhibition.classList.toggle("hidden");
-        }
-        
-        // Изменяем текст кнопки
-        if (eventsBtn) {
-            eventsBtn.classList.toggle('turn');
-            eventsBtn.textContent = eventsBtn.classList.contains('turn') ? 'Свернуть' : 'Все события';
-        }
-    }
-    
-    // Плавная прокрутка к элементу
-    smoothScroll(selector) {
-        const element = typeof selector === 'string' ? document.querySelector(selector) : selector;
-        
-        if (element) {
-            window.scrollTo({
-                top: element.offsetTop,
-                behavior: 'smooth'
-            });
-        }
-    }
-    
-    // Единый обработчик всех кликов (Event Delegation)
-    handleClick(event) {
-        const target = event.target;
-        
-        // Управление классами для header2
-        this.toggleMenuHeadClass(target);
-        this.handleMenuClick(target);
-        
-        // Поиск: открытие/закрытие
-        if (target.matches('.header__search-pic')) {
-            this.toggleSearch();
-            return;
-        }
-        
-        if (target.matches('.header__search-close')) {
-            this.toggleSearch();
-            this.resetSearch();
-            return;
-        }
-        
-        // Закрытие поиска при клике вне его
-        if (!target.closest('.header__search')) {
-            this.closeSearch();
-        }
-        
-        // Кнопка "Все события"
-        if (target.matches('.events__btn')) {
-            this.toggleEventsCards();
-            return;
-        }
-        
-        // Переключение заголовка проверки
-        if (target.matches('.js-check-heading')) {
-            this.elements.checkHeading?.classList.toggle('is-active');
-            return;
-        }
-        
-        // Плавная прокрутка по якорям
-        if (target.matches('a[href^="#"]')) {
-            event.preventDefault();
-            const href = target.getAttribute('href');
-            if (href && href !== '#') {
-                this.smoothScroll(href);
-            }
-            return;
-        }
-        
-        // Кнопка подписки
-        if (target.matches('.hero__subscribe')) {
-            this.smoothScroll(this.elements.contacts);
-        }
-    }
-    
-    // Инициализация приложения
-    init() {
-        // Единый обработчик кликов для всей страницы
-        document.addEventListener('click', (event) => this.handleClick(event));
-        
-        // Закрытие меню при нажатии Escape
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape') {
-                this.closeSearch();
-                if (this.state.openMenu) {
-                    this.state.openMenu.classList.remove("show");
-                    this.state.openMenu = null;
+};
+
+
+const reset = () => {
+    const input = document.querySelector(".header__search-input");
+    input.value = "";
+};
+
+document.querySelector(".header__search-pic").addEventListener("click", picClick);
+document.querySelector(".header__search-close").addEventListener("click", picClick);
+document.querySelector(".header__search-close").addEventListener("click", reset);
+
+
+const initMenu = () => {
+    const form = document.querySelectorAll('.header2__menu-container');
+    const tel = document.querySelectorAll('.header2__item-head');
+    let open;
+
+    document.addEventListener('click', (event) => {
+        const elem = event.target;
+        if (open && (elem === open || open.contains(elem))) return false;
+
+        if (elem.classList.contains('header2__item-head')) {
+            for (let i = 0; i < tel.length; i++) {
+                if (elem === tel[i]) {
+                    if (open && open !== form[i]) {
+                        open.classList.remove("show");
+                    }
+                    open = form[i];
+                    open.classList.toggle("show");
+                    return false;
                 }
             }
+        }
+
+        if (open) {
+            open.classList.remove("show");
+        }
+    });
+};
+
+initMenu();
+
+const classToggle = (target) => {
+    const head = document.querySelectorAll('.header2__item-head');
+    if (target.closest('.header2__item-head') && target.closest('.click')) {
+        target.closest('.header2__item-head').classList.remove('click');
+        return;
+    }
+    head.forEach(item => item.classList.remove('click'));
+
+    if (target.closest('.header2__item-head')) {
+        target.closest('.header2__item-head').classList.add('click');
+    }
+}
+
+const changeHidden = () => {
+    let cards = document.querySelectorAll(".events__card-hidden");
+    let exh = document.querySelector(".exhibition");
+
+    cards.forEach(el => el.classList.toggle("hidden"));
+
+    if (document.documentElement.clientWidth < 993) {
+        exh.classList.toggle("hidden");
+    }
+};
+
+const changeText = () => {
+    let more = document.querySelector(".events__btn");
+
+    more.classList.toggle('turn');
+    if (more.classList.contains('turn')) {
+        more.textContent = 'Свернуть';
+    } else {
+        more.textContent = 'Все события';
+    }
+};
+
+const toggleClass = (selector, className) => {
+    document.querySelector(selector).classList.toggle(className);
+}
+
+const toggleShow = (event, selectors) => {
+    if (selectors.every(selector => !event.target.closest(selector))) {
+        selectors.forEach(selector => {
+            document.querySelector(selector).classList.remove('show');
         });
     }
 }
 
-// Инициализация после загрузки DOM
-document.addEventListener('DOMContentLoaded', () => {
-    new BlanchardApp();
+const smoothScroll = (selector) => {
+    const element = document.querySelector(selector);
+    window.scrollTo({
+        top: element.offsetTop,
+        behavior: 'smooth'
+    });
+}
+
+document.addEventListener('click', (event) => {
+    // Toggle click class
+    classToggle(event.target);
+
+    // Search click handlers
+    if (event.target.matches('.header__search-pic')) {
+        picClick();
+    }
+    if (event.target.matches('.header__search-close')) {
+        reset();
+    }
+    if (!event.target.closest('.header__search') && !event.target.matches('.header__search')) {
+        const input = document.querySelector(".header__search-input");
+        const lupe = document.querySelector(".header__search-pic320");
+        const search = document.querySelector(".header__search");
+        const pic = document.querySelector(".header__search-pic");
+        const button = document.querySelector(".header__search-button");
+        const cross = document.querySelector(".header__search-close");
+
+        input.classList.remove("show");
+        lupe.classList.remove("show");
+        search.classList.remove("open");
+        pic.classList.remove("close");
+        button.classList.remove("show");
+
+        if (document.documentElement.clientWidth < 993) {
+            if (cross) {
+                cross.classList.remove("show");
+                cross.removeEventListener("click", reset);
+            }
+        }
+    }
+
+    // Events button click handler
+    if (event.target.matches('.events__btn')) {
+        changeHidden();
+        changeText();
+    }
+
+    // Check heading click handler
+    if (event.target.matches('.js-check-heading')) {
+        toggleClass('.js-check-heading', 'is-active');
+    }
+
+    // Smooth scroll click handlers
+    if (event.target.matches('a[href^="#"]')) {
+        event.preventDefault();
+        const href = event.target.getAttribute('href');
+        smoothScroll(href);
+    }
+    if (event.target.matches('.hero__subscribe')) {
+        smoothScroll('.contacts');
+    }
 });
+
