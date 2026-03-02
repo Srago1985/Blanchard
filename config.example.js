@@ -1,0 +1,1 @@
+window.APP_CONFIG = { yandexMapsApiKey: 'YOUR_KEY_HERE' };

@@ -1,13 +1,11 @@
-$(document).ready(function() {
-	$('.menu-burger').click(function(){
-        $('.menu-burger').toggleClass('open-menu');
-        $('.header__nav2').toggleClass('open-menu');
-        $('.header__login').toggleClass('open-menu');        
-	});
-
-        $('.header__nav2').click(function(){
-                $('.menu-burger').toggleClass('open-menu');
-                $('.header__nav2').toggleClass('open-menu');
-                $('.header__login').toggleClass('open-menu');               
-        });
+document.addEventListener('DOMContentLoaded', () => {
+  const burger = document.querySelector('.menu-burger');
+  const nav = document.querySelector('.header__nav2');
+  const login = document.querySelector('.header__login');
+  burger.addEventListener('click', () => {
+    [burger, nav, login].forEach(el => el.classList.toggle('open-menu'));
+  });
+  nav.addEventListener('click', () => {
+    [burger, nav, login].forEach(el => el.classList.toggle('open-menu'));
+  });
 });
