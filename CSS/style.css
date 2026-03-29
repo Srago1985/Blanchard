@@ -2719,6 +2719,18 @@ input::-webkit-inner-spin-button {
     }   
 }
 
+@media (min-width: 993px) {
+    .events__content .swiper-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 50px;
+    }
+
+    .events__content-card.events__card.list-item.swiper-slide {
+        width: calc((100% - 100px) / 3);
+    }
+}
+
 @media (max-width: 1666px) {
     .container {
         padding-left: 15px;
@@ -3367,6 +3379,48 @@ input::-webkit-inner-spin-button {
 
     .hero__content {
         margin-bottom: 133px;
+    }
+
+    .events {
+        margin-bottom: 52px;
+    }
+
+    .events__card.hidden {
+        display: block;
+    }
+
+    .events__btn {
+        display: none;
+    }
+
+    .events__card {
+        margin: 0;
+    }
+
+    .events__content .swiper-wrapper {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
+    .swiper3 {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .newSwiper-pagination.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
+        position: relative;
+        margin-top: 15px;
+        bottom: auto;
+    }
+
+    .events__content-card.events__card.list-item.swiper-slide {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
+        display: block;
     }
 
     .about {
@@ -4497,7 +4551,7 @@ input::-webkit-inner-spin-button {
     }
 
     .events {
-        margin-bottom: -3px;
+        margin-bottom: 20px;
     }
 
     .events__head {
@@ -4534,7 +4588,8 @@ input::-webkit-inner-spin-button {
     }
 
     .newSwiper-pagination.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
-        bottom: 20px;
+        margin-top: 15px;
+        bottom: auto;
     }
 
     .events__card.biennale {

@@ -73,13 +73,8 @@ const handleHeader2MenuClick = (target) => {
 
 const changeHidden = () => {
     let cards = document.querySelectorAll(".events__card-hidden");
-    let exh = document.querySelector(".exhibition");
 
     cards.forEach(el => el.classList.toggle("hidden"));
-
-    if (document.documentElement.clientWidth < 993) {
-        exh.classList.toggle("hidden");
-    }
 };
 
 const changeText = () => {
@@ -140,8 +135,13 @@ document.addEventListener('click', (event) => {
 
     // Events button click handler
     if (event.target.matches('.events__btn')) {
+        const wasExpanded = event.target.classList.contains('turn');
         changeHidden();
         changeText();
+
+        if (wasExpanded) {
+            smoothScroll('.events');
+        }
     }
 
     // Check heading click handler

@@ -50,6 +50,9 @@ const swiper1 = new Swiper('.swiper1', {
 
 const swiper2 = document.querySelector('.newSwiper');
 let mySwiper;
+const eventsHiddenCards = document.querySelectorAll('.events__card-hidden');
+const eventsMoreButton = document.querySelector('.events__btn');
+const tabletBreakpoint = 992;
 
 function throttle(fn, delay) {
     let isThrottled = false;
@@ -68,6 +71,32 @@ function throttle(fn, delay) {
     };
 }
 
+function syncEventsSliderCardsHeight() {
+    if (!swiper2) {
+        return;
+    }
+
+    const sliderCards = Array.from(swiper2.querySelectorAll('.swiper-slide'));
+
+    if (!sliderCards.length) {
+        return;
+    }
+
+    sliderCards.forEach((card) => {
+        card.style.height = 'auto';
+    });
+
+    if (window.innerWidth > tabletBreakpoint) {
+        return;
+    }
+
+    const maxHeight = Math.max(...sliderCards.map((card) => card.offsetHeight));
+
+    sliderCards.forEach((card) => {
+        card.style.height = `${maxHeight}px`;
+    });
+}
+
 function mobileSlider() {
     if (!swiper2) {
         return;
@@ -77,31 +106,58 @@ function mobileSlider() {
         swiper2.dataset.mobile = 'false';
     }
 
-    if (window.innerWidth <= 767 && swiper2.dataset.mobile === 'false') {
+    if (window.innerWidth <= tabletBreakpoint && swiper2.dataset.mobile === 'false') {
+        eventsHiddenCards.forEach((card) => card.classList.remove('hidden'));
+
+        if (eventsMoreButton) {
+            eventsMoreButton.classList.remove('turn');
+            eventsMoreButton.textContent = 'Все события';
+        }
+
         mySwiper = new Swiper(swiper2, {
+            slidesPerView: 1,
+            slidesPerGroup: 1,
             spaceBetween: 10,
-            loop: true,
+            loop: false,
             pagination: {
                 el: '.newSwiper-pagination',
                 clickable: true,
             },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                    slidesPerGroup: 1,
+                    spaceBetween: 24,
+                },
+            },
+            on: {
+                init: syncEventsSliderCardsHeight,
+                resize: syncEventsSliderCardsHeight,
+            },
         });
+
+        mySwiper.update();
+        syncEventsSliderCardsHeight();
 
         swiper2.dataset.mobile = 'true';
     }
 
-    if (window.innerWidth > 767 && swiper2.dataset.mobile === 'true') {
+    if (window.innerWidth > tabletBreakpoint && swiper2.dataset.mobile === 'true') {
         swiper2.dataset.mobile = 'false';
 
         if (mySwiper && !mySwiper.destroyed) {
             mySwiper.destroy(true, true);
             mySwiper = null;
         }
+
+        eventsHiddenCards.forEach((card) => card.classList.add('hidden'));
+        syncEventsSliderCardsHeight();
     }
 
 }
 
 mobileSlider();
+    window.addEventListener('load', syncEventsSliderCardsHeight);
 
 window.addEventListener('resize', throttle(mobileSlider, 200));
 
