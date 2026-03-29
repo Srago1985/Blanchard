@@ -56,18 +56,34 @@ const tabletBreakpoint = 992;
 
 function throttle(fn, delay) {
     let isThrottled = false;
+    let savedArgs = null;
+    let savedThis = null;
 
-    return function throttledFn(...args) {
-        if (isThrottled) {
-            return;
-        }
-
+    const invoke = (context, args) => {
+        fn.apply(context, args);
         isThrottled = true;
-        fn.apply(this, args);
 
         setTimeout(() => {
             isThrottled = false;
+
+            if (savedArgs) {
+                const argsToRun = savedArgs;
+                const thisToRun = savedThis;
+                savedArgs = null;
+                savedThis = null;
+                invoke(thisToRun, argsToRun);
+            }
         }, delay);
+    };
+
+    return function throttledFn(...args) {
+        if (isThrottled) {
+            savedArgs = args;
+            savedThis = this;
+            return;
+        }
+
+        invoke(this, args);
     };
 }
 
@@ -149,6 +165,21 @@ function mobileSlider() {
             mySwiper.destroy(true, true);
             mySwiper = null;
         }
+
+        const sliderWrapper = swiper2.querySelector('.swiper-wrapper');
+        const sliderCards = Array.from(swiper2.querySelectorAll('.swiper-slide'));
+
+        if (sliderWrapper) {
+            sliderWrapper.style.removeProperty('transform');
+            sliderWrapper.style.removeProperty('transition-duration');
+            sliderWrapper.style.removeProperty('width');
+        }
+
+        sliderCards.forEach((card) => {
+            card.style.removeProperty('width');
+            card.style.removeProperty('margin-right');
+            card.style.removeProperty('height');
+        });
 
         eventsHiddenCards.forEach((card) => card.classList.add('hidden'));
         syncEventsSliderCardsHeight();
