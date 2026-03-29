@@ -31,48 +31,45 @@ document.querySelector(".header__search-close").addEventListener("click", picCli
 document.querySelector(".header__search-close").addEventListener("click", reset);
 
 
-const initMenu = () => {
-    const form = document.querySelectorAll('.header2__menu-container');
-    const tel = document.querySelectorAll('.header2__item-head');
-    let open;
+const header2Menus = document.querySelectorAll('.header2__menu-container');
+const header2Heads = document.querySelectorAll('.header2__item-head');
+let openHeader2Menu = null;
 
-    document.addEventListener('click', (event) => {
-        const elem = event.target;
-        if (open && (elem === open || open.contains(elem))) return false;
+const handleHeader2MenuClick = (target) => {
+    const headBtn = target.closest('.header2__item-head');
 
-        if (elem.classList.contains('header2__item-head')) {
-            for (let i = 0; i < tel.length; i++) {
-                if (elem === tel[i]) {
-                    if (open && open !== form[i]) {
-                        open.classList.remove("show");
-                    }
-                    open = form[i];
-                    open.classList.toggle("show");
-                    return false;
-                }
-            }
-        }
-
-        if (open) {
-            open.classList.remove("show");
-        }
-    });
-};
-
-initMenu();
-
-const classToggle = (target) => {
-    const head = document.querySelectorAll('.header2__item-head');
-    if (target.closest('.header2__item-head') && target.closest('.click')) {
-        target.closest('.header2__item-head').classList.remove('click');
+    if (openHeader2Menu && (target === openHeader2Menu || openHeader2Menu.contains(target))) {
         return;
     }
-    head.forEach(item => item.classList.remove('click'));
 
-    if (target.closest('.header2__item-head')) {
-        target.closest('.header2__item-head').classList.add('click');
+    if (headBtn) {
+        const index = Array.from(header2Heads).indexOf(headBtn);
+
+        if (index === -1) {
+            return;
+        }
+
+        const menuToToggle = header2Menus[index];
+        const shouldOpen = menuToToggle && !menuToToggle.classList.contains('header2__menu-container--open');
+
+        header2Menus.forEach((menu) => menu.classList.remove('header2__menu-container--open'));
+        header2Heads.forEach((item) => item.classList.remove('header2__item-head--open'));
+
+        if (shouldOpen) {
+            menuToToggle.classList.add('header2__menu-container--open');
+            headBtn.classList.add('header2__item-head--open');
+            openHeader2Menu = menuToToggle;
+        } else {
+            openHeader2Menu = null;
+        }
+
+        return;
     }
-}
+
+    header2Menus.forEach((menu) => menu.classList.remove('header2__menu-container--open'));
+    header2Heads.forEach((item) => item.classList.remove('header2__item-head--open'));
+    openHeader2Menu = null;
+};
 
 const changeHidden = () => {
     let cards = document.querySelectorAll(".events__card-hidden");
@@ -100,14 +97,6 @@ const toggleClass = (selector, className) => {
     document.querySelector(selector).classList.toggle(className);
 }
 
-const toggleShow = (event, selectors) => {
-    if (selectors.every(selector => !event.target.closest(selector))) {
-        selectors.forEach(selector => {
-            document.querySelector(selector).classList.remove('show');
-        });
-    }
-}
-
 const smoothScroll = (selector) => {
     const element = document.querySelector(selector);
     window.scrollTo({
@@ -117,8 +106,8 @@ const smoothScroll = (selector) => {
 }
 
 document.addEventListener('click', (event) => {
-    // Toggle click class
-    classToggle(event.target);
+    // Header2 dropdown and arrow state
+    handleHeader2MenuClick(event.target);
 
     // Search click handlers
     if (event.target.matches('.header__search-pic')) {

@@ -11,6 +11,7 @@ const swiper = new Swiper('.swiper', {
 const swiper1 = new Swiper('.swiper1', {
     // Optional parameters 
     slidesPerView: 1,
+    spaceBetween: 20,
     grid: {
         rows: 1,
     },
@@ -30,6 +31,7 @@ const swiper1 = new Swiper('.swiper1', {
             grid: {
                 fill: 'row',
                 rows: 2,
+                rowGap: 34,
             },
         },
 
@@ -40,6 +42,7 @@ const swiper1 = new Swiper('.swiper1', {
             grid: {
                 fill: 'row',
                 rows: 2,
+                rowGap: 50,
             },
         },
     }
@@ -48,10 +51,35 @@ const swiper1 = new Swiper('.swiper1', {
 const swiper2 = document.querySelector('.newSwiper');
 let mySwiper;
 
+function throttle(fn, delay) {
+    let isThrottled = false;
+
+    return function throttledFn(...args) {
+        if (isThrottled) {
+            return;
+        }
+
+        isThrottled = true;
+        fn.apply(this, args);
+
+        setTimeout(() => {
+            isThrottled = false;
+        }, delay);
+    };
+}
+
 function mobileSlider() {
+    if (!swiper2) {
+        return;
+    }
+
+    if (!swiper2.dataset.mobile) {
+        swiper2.dataset.mobile = 'false';
+    }
+
     if (window.innerWidth <= 767 && swiper2.dataset.mobile === 'false') {
         mySwiper = new Swiper(swiper2, {
-            spaceBetween: 10,            
+            spaceBetween: 10,
             loop: true,
             pagination: {
                 el: '.newSwiper-pagination',
@@ -64,17 +92,18 @@ function mobileSlider() {
 
     if (window.innerWidth > 767 && swiper2.dataset.mobile === 'true') {
         swiper2.dataset.mobile = 'false';
-        if (swiper2.classList.contains('swiper-container-initialized')) {
-            mySwiper.destroy();
+
+        if (mySwiper && !mySwiper.destroyed) {
+            mySwiper.destroy(true, true);
+            mySwiper = null;
         }
     }
+
 }
 
-mobileSlider()
+mobileSlider();
 
-window.addEventListener('resize', () => {
-    mobileSlider();    
-});
+window.addEventListener('resize', throttle(mobileSlider, 200));
 
 
 const swiper3 = new Swiper('.swiper4', {

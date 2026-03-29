@@ -1,5 +1,10 @@
-const s = document.createElement("script");
-  s.src = `https://api-maps.yandex.ru/2.1/?apikey=${window.APP_CONFIG.yandexMapsApiKey}&lang=ru_RU`;
+const mapApiKey = window.APP_CONFIG && window.APP_CONFIG.yandexMapsApiKey;
+
+if (!mapApiKey || mapApiKey === 'YOUR_KEY_HERE') {
+  console.warn('Yandex Maps API key is not configured.');
+} else {
+  const s = document.createElement("script");
+  s.src = `https://api-maps.yandex.ru/2.1/?apikey=${mapApiKey}&lang=ru_RU`;
   s.onload = function() {
     ymaps.ready(init);
     function init() {
@@ -18,3 +23,4 @@ const s = document.createElement("script");
     }
   };
   document.head.appendChild(s);
+}

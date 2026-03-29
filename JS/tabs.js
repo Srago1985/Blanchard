@@ -29,9 +29,9 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             document.querySelector(`[data-target="${path2}"]`).classList.add('portrait-panel-active');
             document.querySelectorAll(".catalog__content-text").forEach(el => {
-                el.classList.remove("btn2-active");
+                el.classList.remove("catalog__content-text--active");
             });
-            this.classList.add('btn2-active');
+            this.classList.add('catalog__content-text--active');
             function scroll() {
                 document.querySelector(`[data-target="${path2}"]`).scrollIntoView({behavior: "smooth"})
             };
