@@ -1,6 +1,7 @@
+import Toastify from 'toastify-js';
+
 window.showNotification = () => {
-    window
-        .Toastify({
+    Toastify({
             text: 'Заявка успешно отправлена!',
             duration: 5000,
             close: true,            

@@ -234,6 +234,10 @@ ul {
     display: none;
 }
 
+.header__search-pic {
+    cursor: pointer;
+}
+
 .btn {
     background-color: transparent;
     border: 0;       

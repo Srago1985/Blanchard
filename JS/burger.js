@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+const initBurgerMenu = () => {
   const burger = document.querySelector('.menu-burger');
   const nav = document.querySelector('.header__nav2');
   const login = document.querySelector('.header__login');
@@ -46,4 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
   nav.addEventListener('click', () => {
     setMenuState(false);
   });
-});
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initBurgerMenu);
+} else {
+  initBurgerMenu();
+}

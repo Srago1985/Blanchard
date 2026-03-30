@@ -1,6 +1,12 @@
-$(function () {
+import $ from 'jquery';
+
+const initCatalogAccordion = () => {
     const mobileBreakpoint = 640;
-    const accordion = $(".accordion");
+    const accordion = $('.accordion');
+
+    if (!accordion.length || typeof accordion.accordion !== 'function') {
+        return;
+    }
 
     function isMobileWidth() {
         return window.innerWidth <= mobileBreakpoint;
@@ -39,4 +45,10 @@ $(function () {
     }, 200);
 
     window.addEventListener("resize", syncAccordionByBreakpoint);
-});
+};
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCatalogAccordion);
+} else {
+    initCatalogAccordion();
+}

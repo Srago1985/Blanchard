@@ -1,3 +1,5 @@
+import tippy from 'tippy.js';
+
 tippy('.tooltip-1', {
     content: 'Пример современных тенденций - современная методология разработки',
     theme: 'projects',

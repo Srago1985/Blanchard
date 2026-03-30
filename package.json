@@ -8,8 +8,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "jquery": "^4.0.0",
+    "inputmask": "^5.0.9",
+    "jquery": "^3.7.1",
     "jquery-ui-dist": "^1.13.3",
-    "tippy.js": "^6.3.7"
+    "tippy.js": "^6.3.7",
+    "toastify-js": "^1.12.0"
   }
 }
