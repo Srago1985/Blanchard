@@ -32,11 +32,11 @@ document.querySelector(".header__search-close").addEventListener("click", reset)
 
 
 const header2Menus = document.querySelectorAll('.header2__menu-container');
-const header2Heads = document.querySelectorAll('.header2__item-head');
+const header2Heads = document.querySelectorAll('.header2__item-title');
 let openHeader2Menu = null;
 
 const handleHeader2MenuClick = (target) => {
-    const headBtn = target.closest('.header2__item-head');
+    const headBtn = target.closest('.header2__item-title');
 
     if (openHeader2Menu && (target === openHeader2Menu || openHeader2Menu.contains(target))) {
         return;
@@ -53,11 +53,11 @@ const handleHeader2MenuClick = (target) => {
         const shouldOpen = menuToToggle && !menuToToggle.classList.contains('header2__menu-container--open');
 
         header2Menus.forEach((menu) => menu.classList.remove('header2__menu-container--open'));
-        header2Heads.forEach((item) => item.classList.remove('header2__item-head--open'));
+        header2Heads.forEach((item) => item.classList.remove('header2__item-title--open'));
 
         if (shouldOpen) {
             menuToToggle.classList.add('header2__menu-container--open');
-            headBtn.classList.add('header2__item-head--open');
+            headBtn.classList.add('header2__item-title--open');
             openHeader2Menu = menuToToggle;
         } else {
             openHeader2Menu = null;
@@ -67,7 +67,7 @@ const handleHeader2MenuClick = (target) => {
     }
 
     header2Menus.forEach((menu) => menu.classList.remove('header2__menu-container--open'));
-    header2Heads.forEach((item) => item.classList.remove('header2__item-head--open'));
+    header2Heads.forEach((item) => item.classList.remove('header2__item-title--open'));
     openHeader2Menu = null;
 };
 
