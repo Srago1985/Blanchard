@@ -51,6 +51,7 @@ const swiper1 = new Swiper('.swiper1', {
 const swiper2 = document.querySelector('.newSwiper');
 let mySwiper;
 const eventsHiddenCards = document.querySelectorAll('.events__card-hidden');
+const allEventsCards = document.querySelectorAll('.events__content-card.events__card');
 const eventsMoreButton = document.querySelector('.events__btn');
 const tabletBreakpoint = 992;
 
@@ -123,7 +124,7 @@ function mobileSlider() {
     }
 
     if (window.innerWidth <= tabletBreakpoint && swiper2.dataset.mobile === 'false') {
-        eventsHiddenCards.forEach((card) => card.classList.remove('hidden'));
+        allEventsCards.forEach((card) => card.classList.remove('hidden'));
 
         if (eventsMoreButton) {
             eventsMoreButton.classList.remove('turn');
@@ -146,6 +147,8 @@ function mobileSlider() {
                     spaceBetween: 24,
                 },
             },
+            observer: true,
+            observeParents: true,
             on: {
                 init: syncEventsSliderCardsHeight,
                 resize: syncEventsSliderCardsHeight,
@@ -153,6 +156,8 @@ function mobileSlider() {
         });
 
         mySwiper.update();
+        mySwiper.updateSlides();
+        mySwiper.updateSlidesClasses();
         syncEventsSliderCardsHeight();
 
         swiper2.dataset.mobile = 'true';
