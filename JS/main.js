@@ -6,6 +6,27 @@ window.$ = $;
 window.jQuery = $;
 window.tippy = tippy;
 
+const baseUrl = import.meta.env.BASE_URL || '/';
+
+const resolveLegacyUrl = (relativePath) => `${baseUrl}${relativePath.replace(/^\/+/, '')}`;
+
+const loadLegacyScript = (src) =>
+	new Promise((resolve, reject) => {
+		const existing = document.querySelector(`script[data-legacy-src="${src}"]`);
+		if (existing) {
+			resolve();
+			return;
+		}
+
+		const script = document.createElement('script');
+		script.src = src;
+		script.async = false;
+		script.dataset.legacySrc = src;
+		script.onload = () => resolve();
+		script.onerror = () => reject(new Error(`Failed to load script: ${src}`));
+		document.head.appendChild(script);
+	});
+
 const safeImport = async (loader, name) => {
 	try {
 		await loader();
@@ -15,8 +36,8 @@ const safeImport = async (loader, name) => {
 };
 
 const bootstrapOptionalModules = async () => {
-	// jquery-ui expects global jQuery on window.
-	await safeImport(() => import('jquery-ui-dist/jquery-ui.js'), 'jquery-ui-dist/jquery-ui.js');
+	// jQuery UI is loaded as a legacy script to avoid broken ESM exports in production bundles.
+	await safeImport(() => loadLegacyScript(resolveLegacyUrl('vendor/jquery-ui.min.js')), 'vendor/jquery-ui.min.js');
 
 	// Catalog controls should initialize immediately after jquery-ui is ready.
 	await safeImport(() => import('./accordion-init.js'), './accordion-init.js');

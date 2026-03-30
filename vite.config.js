@@ -9,7 +9,7 @@ export default defineConfig(({ command }) => ({
     rollupOptions: {
       output: {
         manualChunks(id) {
-          if (id.includes('node_modules/jquery') || id.includes('jquery-ui-dist')) {
+          if (id.includes('node_modules/jquery')) {
             return 'jquery';
           }
           if (id.includes('node_modules/tippy.js') || id.includes('@popperjs/core')) {
