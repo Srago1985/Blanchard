@@ -1,9 +1,12 @@
 import $ from 'jquery';
 import 'jquery-ui-dist/jquery-ui.js';
 import 'jquery-ui-dist/jquery-ui.css';
+import tippy from 'tippy.js';
+import 'tippy.js/dist/tippy.css';
 
 window.$ = $;
 window.jQuery = $;
+window.tippy = tippy;
 
 import './accordion-init.js';
 import './swiper-bundle.min.js';
@@ -15,6 +18,7 @@ import './burger.js';
 import './tabs.js';
 import './swiper-init.js';
 import './modal.js';
+import './tippy-init.js';
 import './inputmask.js';
 import './inputmask-init.js';
 import './toastify.js';
