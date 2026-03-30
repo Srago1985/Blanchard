@@ -1,3 +1,10 @@
+import $ from 'jquery';
+import 'jquery-ui-dist/jquery-ui.js';
+import 'jquery-ui-dist/jquery-ui.css';
+
+window.$ = $;
+window.jQuery = $;
+
 import './accordion-init.js';
 import './swiper-bundle.min.js';
 import './simplebar.min.js';
