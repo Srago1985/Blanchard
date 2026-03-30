@@ -1,29 +1,36 @@
 import $ from 'jquery';
-import 'jquery-ui-dist/jquery-ui.js';
 import 'jquery-ui-dist/jquery-ui.css';
-import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css';
 
 window.$ = $;
 window.jQuery = $;
-window.tippy = tippy;
 
-import './accordion-init.js';
-import './swiper-bundle.min.js';
-import './simplebar.min.js';
-import './simplebar-init.js';
-import './choices.min.js';
-import './choices-init.js';
-import './burger.js';
-import './tabs.js';
-import './swiper-init.js';
-import './modal.js';
-import './tippy-init.js';
-import './inputmask.js';
-import './inputmask-init.js';
-import './toastify.js';
-import './just-validate.min.js';
-import './just-validate-init.js';
-import '../config.js';
-import './maps.js';
-import './blanchard.js';
+const bootstrap = async () => {
+	await import('jquery-ui-dist/jquery-ui.js');
+
+	const { default: tippy } = await import('tippy.js');
+	window.tippy = tippy;
+
+	await import('./swiper-bundle.min.js');
+	await import('./simplebar.min.js');
+	await import('./choices.min.js');
+	await import('./inputmask.js');
+	await import('./toastify.js');
+	await import('./just-validate.min.js');
+
+	await import('./accordion-init.js');
+	await import('./simplebar-init.js');
+	await import('./choices-init.js');
+	await import('./burger.js');
+	await import('./tabs.js');
+	await import('./swiper-init.js');
+	await import('./modal.js');
+	await import('./tippy-init.js');
+	await import('./inputmask-init.js');
+	await import('./just-validate-init.js');
+	await import('../config.js');
+	await import('./maps.js');
+	await import('./blanchard.js');
+};
+
+bootstrap();
