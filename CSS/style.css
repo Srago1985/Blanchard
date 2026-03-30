@@ -4345,6 +4345,9 @@ input::-webkit-inner-spin-button {
     }
 
     .hero {
+        top: 0;
+        margin-top: 0;
+        margin-bottom: 0;
         padding-top: 30px;
         padding-bottom: 45px;
     }
@@ -4374,8 +4377,6 @@ input::-webkit-inner-spin-button {
         font-weight: bold;
         font-size: 12px;
         line-height: 1.333;
-
-        background-image: url(../IMG/alkazar320.jpg);
     }
 
     .slide2 {
