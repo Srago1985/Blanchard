@@ -29,6 +29,10 @@ body {
     min-width: 320px;
 }
 
+html, body {
+    overflow-x: hidden;
+}
+
 body.menu-open {
     overflow: hidden;
 }
