@@ -3558,6 +3558,10 @@ input::-webkit-inner-spin-button {
         display: none;
     }
 
+    .events__content.newSwiper .events__card.exhibition {
+        display: block;
+    }
+
     .print::before {
         background-image: url(../IMG/print-768.jpg);
         background-size: contain;
