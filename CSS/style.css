@@ -29,6 +29,10 @@ body {
     min-width: 320px;
 }
 
+html, body {
+    overflow-x: hidden;
+}
+
 body.menu-open {
     overflow: hidden;
 }
@@ -4045,7 +4049,7 @@ input::-webkit-inner-spin-button {
 
     .contacts__right {
         height: 320px;
-        width: 100vw;        
+        width: 100%;
     }
 
     .contacts__form-submit {

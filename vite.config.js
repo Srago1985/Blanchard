@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig(({ command }) => ({
-  base: command === 'build' ? '/Blanchard/' : '/',
+  base: command === 'build' ? (process.env.BASE_PATH || '/') : '/',
   server: {
     port: 5173
   },
