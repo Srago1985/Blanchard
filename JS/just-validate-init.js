@@ -1,6 +1,5 @@
 import Toastify from 'toastify-js';
-
-const JustValidate = window.JustValidate;
+import JustValidate from './just-validate.min.js';
 
 window.showNotification = () => {
     Toastify({

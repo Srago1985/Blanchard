@@ -1,4 +1,4 @@
-const Swiper = window.Swiper;
+import Swiper from './swiper-bundle.min.js';
 
 const swiper = new Swiper('.swiper', {
     // Optional parameters
