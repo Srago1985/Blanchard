@@ -1,4 +1,6 @@
-import Swiper from './swiper-bundle.min.js';
+import * as SwiperLib from './swiper-bundle.min.js';
+
+const Swiper = SwiperLib.default || SwiperLib.Swiper || window.Swiper;
 
 const swiper = new Swiper('.swiper', {
     // Optional parameters

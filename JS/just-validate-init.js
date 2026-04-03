@@ -1,5 +1,7 @@
 import Toastify from 'toastify-js';
-import JustValidate from './just-validate.min.js';
+import * as JustValidateLib from './just-validate.min.js';
+
+const JustValidate = JustValidateLib.default || JustValidateLib.JustValidate || window.JustValidate;
 
 window.showNotification = () => {
     Toastify({
