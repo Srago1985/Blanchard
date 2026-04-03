@@ -96,5 +96,3 @@ const spriteContent = `<svg xmlns="http://www.w3.org/2000/svg">\n${spriteBody}\n
 fs.writeFileSync(indexPath, html, 'utf8');
 fs.writeFileSync(spritePath, spriteContent, 'utf8');
 
-console.log(`Converted ${blocks.length} inline SVG blocks.`);
-console.log(`Created ${symbols.length} unique symbol parts in IMG/sprite.svg.`);
