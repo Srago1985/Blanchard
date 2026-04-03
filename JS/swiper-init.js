@@ -1,3 +1,5 @@
+const Swiper = window.Swiper;
+
 const swiper = new Swiper('.swiper', {
     // Optional parameters
     loop: true,

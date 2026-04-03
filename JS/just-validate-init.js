@@ -1,5 +1,7 @@
 import Toastify from 'toastify-js';
 
+const JustValidate = window.JustValidate;
+
 window.showNotification = () => {
     Toastify({
             text: 'Заявка успешно отправлена!',

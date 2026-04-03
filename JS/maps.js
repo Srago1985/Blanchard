@@ -1,4 +1,5 @@
 const mapApiKey = window.APP_CONFIG && window.APP_CONFIG.yandexMapsApiKey;
+const placemarkIconUrl = new URL('../IMG/placemark.png', import.meta.url).href;
 
 if (!mapApiKey || mapApiKey === 'YOUR_KEY_HERE') {
   console.warn('Yandex Maps API key is not configured.');
@@ -14,7 +15,7 @@ if (!mapApiKey || mapApiKey === 'YOUR_KEY_HERE') {
       });
       var myPlacemark = new ymaps.Placemark([55.758397, 37.601617], {}, {
         iconLayout: 'default#image',
-        iconImageHref: 'IMG/placemark.png',
+        iconImageHref: placemarkIconUrl,
         iconImageSize: [20, 20],
         iconImageOffset: []
       });
